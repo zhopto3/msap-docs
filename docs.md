@@ -58,6 +58,12 @@ be it a morpheme or a word. So the content node _go_ in _will go_ should bear th
   * All applicable features should be marked on the respective content nodes, even if
   expressed by non-concatenative means. E.g., the node _go_ in _did you go?_ should be
   marked with `Mood=Int` even though it is expressed mostly by word order.
+* Function words should not have morpho-syntactic features. All the information they
+convey should be expressed as features on the relevant content node.
+  * Note: since the file format is a modified version of UD's CoNLL-U, function words
+  may appear in the final output. In this case, the MS-feats column of these words
+  should contain `_`, in contrast with content words that happen to have no MS-feats
+  that should contain an orphan pipe `|`.
 * Features should be applied only to their relevant node. In other words, no agreement
 features are needed, and in a phrase like _he goes_ only _he_ should bear
 `Person=3|Number=Sing`, and _goes_ should have only `Tense=Pres` (and other features if
@@ -72,7 +78,7 @@ strings. They can contain:
   manifestation of the English phrase _if and when_ when connecting two clauses,
   * and a disjunction of values, `Tense=or(Past,Fut)`.
 
-[^msf1] This is in contrast with the verb _yürümebilir_ (literally “he is able to not walk”,
+[^msf1]: This is in contrast with the verb _yürümebilir_ (literally “he is able to not walk”,
 i.e., he may not walk), where the negation pertains to the verb itself and should be
 tagged as `Mood=Pot|Polarity=Neg`.
 
