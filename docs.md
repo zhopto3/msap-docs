@@ -32,18 +32,21 @@ We will add the morphosyntactic features in a new 11th column called `MS-FEATS'.
 
 ### File Format
 
-### Content Nodes (Syntax)
+The format for morpho-syntactic parsing data is a simple extension of UD's
+[CoNLL-U format](https://universaldependencies.org/format.html). It includes an addition
+of a single column with morpho-syntactic features (named: MS-FEATS) for every UD node
+that contains a content word. UD nodes that contain function words should have empty
+(i.e. `_`) MS features. The new column should be added last, after the MISC column.
 
-#### Abstract Nodes
-
-#### Gaps
+The other CoNLL-U's columns: ID, FORM, LEMMA, UPOS, XPOS, FEATS, HEAD, DEPREL, DEPS, and
+MISC, are defined exactly the same as in UD.
 
 ### Morpho-Syntactic Features
 
 quick link: [feature inventory](https://github.com/omagolda/msud-docs/blob/pages-source/inventory.md)
 
-The morpho-syntactic features are the one of the key characteristics of morpho-syntactic
-dependency trees. They are modelled after the morphological features in UD and may be
+As the key characteristics of morpho-syntactic dependency trees, morpho-syntactic
+features are modelled after the morphological features in UD and may be
 viewed as a generalization of them. [Like in UD]( https://universaldependencies.org/u/overview/morphology.html),
 the features are an unordered set of name and value pairs separated by pipes, of the
 structure `Name1=Value1|Name2=Value2`. Most feature names and values are equivalent to
@@ -52,18 +55,19 @@ of new feature type, see below for details.
 
 However, morpho-syntactic features also differ from morphological features in a couple
 important characteristics:
-* The features are defined not only by morphemes but by any _grammatical_ function marker,
-be it a morpheme or a word. So the content node _go_ in _will go_ should bear the feature
-`Tense=Fut`.
+* The features are only defined for content nodes (see below).
+  * Function words should not have morpho-syntactic features. All the information they
+  convey should be expressed as features on the relevant content node.
+  * Note: since the file format is a modified version of UD's CoNLL-U, function words
+  may appear in the final output, their MS-feats column should be `_`. This is  in
+  contrast with content words that happen to have no MS-feats that should contain an
+  orphan pipe `|`.
+* The features are defined not only by morphemes but by any _grammatical_ function 
+marker, be it a morpheme or a word. So the content node _go_ in _will go_ should bear
+the feature `Tense=Fut`.
   * All applicable features should be marked on the respective content nodes, even if
   expressed by non-concatenative means. E.g., the node _go_ in _did you go?_ should be
   marked with `Mood=Int` even though it is expressed mostly by word order.
-* Function words should not have morpho-syntactic features. All the information they
-convey should be expressed as features on the relevant content node.
-  * Note: since the file format is a modified version of UD's CoNLL-U, function words
-  may appear in the final output. In this case, the MS-feats column of these words
-  should contain `_`, in contrast with content words that happen to have no MS-feats
-  that should contain an orphan pipe `|`.
 * Features should be applied only to their relevant node. In other words, no agreement
 features are needed, and in a phrase like _he goes_ only _he_ should bear
 `Person=3|Number=Sing`, and _goes_ should have only `Tense=Pres` (and other features if
@@ -81,6 +85,42 @@ strings. They can contain:
 [^msf1]: This is in contrast with the verb _yürümebilir_ (literally “he is able to not walk”,
 i.e., he may not walk), where the negation pertains to the verb itself and should be
 tagged as `Mood=Pot|Polarity=Neg`.
+
+
+### Content Nodes
+
+Content nodes, to which morpho-syntactic features are to be defined, are all words or 
+morphemes from open classes (like nouns, verbs and adjectives) that do not convey a
+grammatical modification of another word.[^cn1] These content words should form a
+morpho-syntactic tree, and this is automatically true in most cases when converting UD
+data due to the fact that UD designates content words as heads, so they directly relate
+to one another (see exceptions below).
+<!--- fixed expressions that include a content word in addition to function words --->
+
+For example, in the sentence _the quick brown fox jumps over the lazy dog_ there are 6
+content words (quick, brown, fox, jump, lazy, dog) and 3 function words (the, over, the).
+
+[^cn1]: In most languages, content nodes are equivalent to words. However, in some noun
+incorporating languages open class nouns can appear as morphemes concatenated to another
+content node that is the verb.
+
+#### Abstract Nodes
+
+In addition to words from open classes, content nodes also include all arguments and
+predicates in the sentence. The implications of this are twofold:
+1. Pronouns should always be represented as nodes with MS features, regardless of your
+position on whether pronouns are contentful or a mere bundle of features.
+2. arguments that do not appear explicitly in a sentence but are expressed implicitly
+(i.e., by agreement of their predicate) should also be represented by their own node.
+However, this node lacks FORM or LEMMA fields and is therefore _an abstract node_.
+
+<!--- TODO: explain the relation to layering. emphasize that abstract nodes are only
+needed when the argument is VISIBLE. other abstract nodes in cases of gaps --->
+
+<!--- empty subject this does exist in english: "the cat that meows so nicely is mine" --->
+
+#### Gaps
+
 
 ## Annotation Guidelines
 
