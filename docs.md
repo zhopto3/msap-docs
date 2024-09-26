@@ -72,7 +72,7 @@ strings. They can contain:
   manifestation of the English phrase _if and when_ when connecting two clauses,
   * and a disjunction of values, `Tense=or(Past,Fut)`.
 
-[^msf1] This is in contrast with the verb _yürümebilir_ (literally “he is able to not walk”,
+[^msf1]: This is in contrast with the verb _yürümebilir_ (literally “he is able to not walk”,
 i.e., he may not walk), where the negation pertains to the verb itself and should be
 tagged as `Mood=Pot|Polarity=Neg`.
 
