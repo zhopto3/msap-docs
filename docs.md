@@ -2,29 +2,31 @@
 
 ## Introduction
 
+In this documentation, we first explain the general principles of MSP, and then show the feature set and how to convert a regular UD treebank to MSP, with the example of English.
+
 ### Motivation
 
 Words have long been an essential concept in the definition of treebanks in Universal Dependencies (UD), since the first stage in their construction is delimiting words in the language at hand. This is done due to the common view in theoretical linguistics of words as the dividing line between syntax, the grammatical module of word combination, and morphology, that is word construction.
 
-However, delimiting syntactically relevant words gets exponentially more complicated the less isolating languages are. Thus, this operation, which is as simple as breaking the text on white spaces for English, is borderline impossible for polysynthetic languages, in which a single word may be composed of several lexemes that have predicate-argument relations. This reflects the fact that despite the presumed role of words in contemporary linguistics, there is no consensus on a coherent cross-lingual definition of words.
-
 We suggest defining the content-function boundary to differentiate 'morphological' from 'syntactic' elements. In our morpho-syntactic data structure, content words are represented as separate nodes on a dependency graph, even if they share a whitespace-separated word, and both function words and morphemes contribute morphology-style features to characterize the nodes.
-
-We will thus avoid (most) theoretical debates on word boundaries, and solve much of the word segmentation inconsistencies that occur in UD, either across languages, e.g., Japanese is treated as isolating and Korean as agglutinative,  although they are very similar typologically, or across treebanks of the same language, e.g., the different treebanks for Hebrew segment and attribute different surface forms for clitics.
-Morpho-syntactic data will be more inclusive towards languages that are currently treated unnaturally, most prominently noun-incorporating languages. Morpho-syntactic models will be able to parse sentences in more languages and enable better cross-lingual studies.
-
-We are amending the CoNLL-U files to include MS-features for content words. These features will be annotated mostly automatically from current morphological features and function words. 
-Including all nodes will result in a regular dependency graph, while ignoring all nodes without MS-features will result in a morpho-syntactic tree for this task.
 
 ### Principles
 
 #### Independence of Word Boundary
 
+Delimiting syntactically relevant words gets exponentially more complicated the less isolating languages are. Thus, this operation, which is as simple as breaking the text on white spaces for English, is borderline impossible for polysynthetic languages, in which a single word may be composed of several lexemes that have predicate-argument relations. This reflects the fact that despite the presumed role of words in contemporary linguistics, there is no consensus on a coherent cross-lingual definition of words. We will thus avoid (most) theoretical debates on word boundaries, and solve much of the word segmentation inconsistencies that occur in UD, either across languages, e.g., Japanese is treated as isolating and Korean as agglutinative, even though they are very similar typologically, or across treebanks of the same language, e.g., the different treebanks for Hebrew segment and attribute different surface forms for clitics.
+
 #### Content-Function Divide
+
+The central divide in an MS graph is between content words (or morphemes) and function words (or morphemes). Content words form the nodes, while the information from function words is represented as features modifying the content nodes.
 
 #### Crosslingual Parallelism
 
+Morphosyntactic Annotation will bring the trees of very different languages much closer together and thus enable new typological studies. In isolating languages, the data will explicitly surface MS features that are expressed periphrastically. Morpho-syntactic data will be more inclusive towards languages that are currently treated unnaturally, most prominently noun-incorporating languages. Morpho-syntactic models will be able to parse sentences in more languages and enable better cross-lingual studies.
+
 #### Minimal Deviation from CoNLL-U
+
+We will add the morphosyntactic features in a new 11th column called `MS-FEATS'. The original CoNLL-U file can thus be recovered by simply dropping this column. On the other hand, the morphosyntactic tree can be built by dropping all the lemmas that do not have MS-FEATS defined for them. On the other hand, in polysynthetic languages, the addition of MS-features to content words will expose the argument structure even if it is encapsulated in a single word. 
 
 ## Schema Description
 
