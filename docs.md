@@ -2,49 +2,79 @@
 
 ## Introduction
 
+In this documentation, we first explain the general principles of MSP, and then show the feature set and how to convert a regular UD treebank to MSP, with the example of English.
+
 ### Motivation
 
 Words have long been an essential concept in the definition of treebanks in Universal Dependencies (UD), since the first stage in their construction is delimiting words in the language at hand. This is done due to the common view in theoretical linguistics of words as the dividing line between syntax, the grammatical module of word combination, and morphology, that is word construction.
 
-However, delimiting syntactically relevant words gets exponentially more complicated the less isolating languages are. Thus, this operation, which is as simple as breaking the text on white spaces for English, is borderline impossible for polysynthetic languages, in which a single word may be composed of several lexemes that have predicate-argument relations. This reflects the fact that despite the presumed role of words in contemporary linguistics, there is no consensus on a coherent cross-lingual definition of words.
-
 We suggest defining the content-function boundary to differentiate 'morphological' from 'syntactic' elements. In our morpho-syntactic data structure, content words are represented as separate nodes on a dependency graph, even if they share a whitespace-separated word, and both function words and morphemes contribute morphology-style features to characterize the nodes.
-
-We will thus avoid (most) theoretical debates on word boundaries, and solve much of the word segmentation inconsistencies that occur in UD, either across languages, e.g., Japanese is treated as isolating and Korean as agglutinative,  although they are very similar typologically, or across treebanks of the same language, e.g., the different treebanks for Hebrew segment and attribute different surface forms for clitics.
-Morpho-syntactic data will be more inclusive towards languages that are currently treated unnaturally, most prominently noun-incorporating languages. Morpho-syntactic models will be able to parse sentences in more languages and enable better cross-lingual studies.
-
-We are amending the CoNLL-U files to include MS-features for content words. These features will be annotated mostly automatically from current morphological features and function words. 
-Including all nodes will result in a regular dependency graph, while ignoring all nodes without MS-features will result in a morpho-syntactic tree for this task.
 
 ### Principles
 
 #### Independence of Word Boundary
 
+Delimiting syntactically relevant words gets exponentially more complicated the less isolating languages are. Thus, this operation, which is as simple as breaking the text on white spaces for English, is borderline impossible for polysynthetic languages, in which a single word may be composed of several lexemes that have predicate-argument relations. This reflects the fact that despite the presumed role of words in contemporary linguistics, there is no consensus on a coherent cross-lingual definition of words. We will thus avoid (most) theoretical debates on word boundaries, and solve much of the word segmentation inconsistencies that occur in UD, either across languages, e.g., Japanese is treated as isolating and Korean as agglutinative, even though they are very similar typologically, or across treebanks of the same language, e.g., the different treebanks for Hebrew segment and attribute different surface forms for clitics.
+
 #### Content-Function Divide
+
+The central divide in an MS graph is between content words (or morphemes) and function words (or morphemes). Content words form the nodes, while the information from function words is represented as features modifying the content nodes.
 
 #### Crosslingual Parallelism
 
+Morphosyntactic Annotation will bring the trees of very different languages much closer together and thus enable new typological studies. In isolating languages, the data will explicitly surface MS features that are expressed periphrastically. Morpho-syntactic data will be more inclusive towards languages that are currently treated unnaturally, most prominently noun-incorporating languages. Morpho-syntactic models will be able to parse sentences in more languages and enable better cross-lingual studies.
+
 #### Minimal Deviation from CoNLL-U
+
+We will add the morphosyntactic features in a new 11th column called `MS-FEATS'. The original CoNLL-U file can thus be recovered by simply dropping this column. On the other hand, the morphosyntactic tree can be built by dropping all the lemmas that do not have MS-FEATS defined for them. On the other hand, in polysynthetic languages, the addition of MS-features to content words will expose the argument structure even if it is encapsulated in a single word. 
 
 ## Schema Description
 
-### Content Nodes (Syntax)
+### File Format
 
-#### Non-morphosyntactic Features
+### Content Nodes (Syntax)
 
 #### Abstract Nodes
 
 #### Gaps
 
-### Function Features (Morphology)
+### Morpho-Syntactic Features
 
-#### Feature Structure
+quick link: [feature inventory](https://github.com/omagolda/msud-docs/blob/pages-source/inventory.md)
 
-no agreement features - discuss
+The morpho-syntactic features are the one of the key characteristics of morpho-syntactic
+dependency trees. They are modelled after the morphological features in UD and may be
+viewed as a generalization of them. [Like in UD]( https://universaldependencies.org/u/overview/morphology.html),
+the features are an unordered set of name and value pairs separated by pipes, of the
+structure `Name1=Value1|Name2=Value2`. Most feature names and values are equivalent to
+those in UD, for example `Gender=Masc`, `Voice=Pass`, etc. But there are also a couple
+of new feature type, see below for details.
 
-conjunction, disjunction and negation of features
+However, morpho-syntactic features also differ from morphological features in a couple
+important characteristics:
+* The features are defined not only by morphemes but by any _grammatical_ function marker,
+be it a morpheme or a word. So the content node _go_ in _will go_ should bear the feature
+`Tense=Fut`.
+  * All applicable features should be marked on the respective content nodes, even if
+  expressed by non-concatenative means. E.g., the node _go_ in _did you go?_ should be
+  marked with `Mood=Int` even though it is expressed mostly by word order.
+* Features should be applied only to their relevant node. In other words, no agreement
+features are needed, and in a phrase like _he goes_ only _he_ should bear
+`Person=3|Number=Sing`, and _goes_ should have only `Tense=Pres` (and other features if
+relevant).
+* The feature structure is not flat. In other words, features are not necessarily single 
+strings. They can contain:
+  * a list of values, for example `Aspect=Perf,Prog` on the verb of the English clause
+  _I have been walking_,
+  * a negation of a value, for example `Mood=not(Pot)` on the Turkish verb _yürüyemez_
+  (“he can’t walk”) where the negation refers to the ability,[^msf1]
+  * a conjunction of values, for example `RelType=and(Cond,Temp)` that is the
+  manifestation of the English phrase _if and when_ when connecting two clauses,
+  * and a disjunction of values, `Tense=or(Past,Fut)`.
 
-#### List of Features and Values
+[^msf1] This is in contrast with the verb _yürümebilir_ (literally “he is able to not walk”,
+i.e., he may not walk), where the negation pertains to the verb itself and should be
+tagged as `Mood=Pot|Polarity=Neg`.
 
 ## Annotation Guidelines
 
