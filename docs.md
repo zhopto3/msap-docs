@@ -161,7 +161,20 @@ was in past tense, no abstract node was created due to lack of agreement feature
 
 #### Gaps
 
-<!--- TODO: other abstract nodes in cases of gaps --->
+Abstract nodes are also to be used in simple gaps, when there are function words
+referring to some missing argument. For example, a phrase like _books to choose from_, 
+should be annotated as:
+~~~ conllu
+4   books   book    NOUN    NN  Number=Plur 2   obj _   _   Number=Plur
+5   to  to  PART    TO  _   6   mark   _   _   _
+6   choose  choose  VERB    VB  VerbForm=Inf    4   acl _   _   VerbForm=Inf
+7   from    from    ADP IN  _   6   obl _   _   _
+7.1    _    _   _   _   _   6   obl _   _   Case=Abl
+~~~
+So node `7.1` is created to carry the feature of the function word _from_.
+
+<!--- TODO: other gap cases: "orphan" relation, others?
+also, guidelines for "weird" rels like "fixed" --->
 
 ## Annotation Guidelines
 
@@ -170,7 +183,7 @@ was in past tense, no abstract node was created due to lack of agreement feature
 #### General
 
 - create a new column
-- decide what your content words and your function words are (by UPOS)
+- decide what your content words and your function words are (by UPOS) <!--- TODO: not necessarily only UPOS --->
 - go through your function words and classify them according to UPOS, relation, and maybe lemma
 - for each of these categories, figure out the morphosyntactic feature and place it on the head content word
 
