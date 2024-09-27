@@ -99,6 +99,7 @@ to one another (see exceptions below).
 
 For example, in the sentence _the quick brown fox jumps over the lazy dog_ there are 6
 content words (quick, brown, fox, jump, lazy, dog) and 3 function words (the, over, the).
+<!--- we probably need a better example --->
 
 [^cn1]: In most languages, content nodes are equivalent to words. However, in some noun
 incorporating languages open class nouns can appear as morphemes concatenated to another
@@ -109,18 +110,58 @@ content node that is the verb.
 In addition to words from open classes, content nodes also include all arguments and
 predicates in the sentence. The implications of this are twofold:
 1. Pronouns should always be represented as nodes with MS features, regardless of your
-position on whether pronouns are contentful or a mere bundle of features.
+theoretical position on whether pronouns are contentful or a mere bundle of features.
 2. arguments that do not appear explicitly in a sentence but are expressed implicitly
 (i.e., by agreement of their predicate) should also be represented by their own node.
 However, this node lacks FORM or LEMMA fields and is therefore _an abstract node_.
+Abstract nodes should appear after the node from which they inherit their features and
+should have a special ID in the form of `X.1`, `X.2` etc.
 
-<!--- TODO: explain the relation to layering. emphasize that abstract nodes are only
-needed when the argument is VISIBLE. other abstract nodes in cases of gaps --->
+The most common use-case of abstract nodes is when pronouns are dropped. For example, in
+Basque, the UD nodes:
+~~~ conllu
+4	ziurtatu	ziurtatu	VERB	_	Aspect=Perf|VerbForm=Part	0	root	_	_
+5	zuten	edun	AUX	_	Mood=Ind|Tense=Past|Number[abs]=Sing|Number[erg]=Plur|Person[abs]=3|Person[erg]=3|VerbForm=Fin	4	aux	_	ReconstructedLemma=Yes
+~~~
+should be tagged as:
+~~~ conllu
+4	ziurtatu	ziurtatu	VERB	_	Aspect=Perf|VerbForm=Part	0	root	_	_   Aspect=Perf|Mood=Ind|Tense=Past|VerbForm=Fin   
+5	zuten	edun	AUX	_	Mood=Ind|Tense=Past|Number[abs]=Sing|Number[erg]=Plur|Person[abs]=3|Person[erg]=3|VerbForm=Fin	4	aux	_	ReconstructedLemma=Yes  _
+5.1 _   _   _   _   _   4   nsubj   _   _   Number=Plur|Person=3|Case=Erg
+5.2 _   _   _   _   _   4   obj _   _   Number=Sing|Person=3|Case=Abs
+~~~
+Note that node `5` now doesn't have MS-feats (the last column) and therefore it will be
+dropped from the MS tree.
 
-<!--- empty subject this does exist in english: "the cat that meows so nicely is mine" --->
+This example underlines that the abstract nodes may be viewed as a replacement for
+feature layering. The advantage of this mechanism is that equates the representation of
+agreement morphemes, clitics and full pronouns, and removes the need to decide which is
+which.
+
+The same mechanism is used whenever an argument is missing from the clause as an
+independent word, _but expressed in other means_, i.e., not when an argument was dropped
+for pragmatic reasons or otherwise being not detectable from the surface forms. For
+example, the annotation of the Japanese sentence _宣言したのだ_ ("(he) proclaimed") should
+not contain an abstract node for the non-existent subject although one is understood.
+
+Abstract nodes are also to be used when the argument is outside the clause, for example:
+~~~ conllu
+1   the the DET DT  _   2   det _   _   _
+2   cat cat NOUN    NN  Number=Sing 7   nsubj   _   _   Number=Sing|Definite=Def
+3   that    that    SCONJ   IN  _   4   mark _  _   _
+4   meows   meow    VERB    VBZ Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin   2   acl:relcl   _   _   Mood=Ind|Tense=Pres|VerbForm=Fin   
+4.1 _   _   _   _   _   4   nsubj   _   _   Number=Sing|Person=3
+5   nicely  nicely  ADC RB  _   4   advmod  _   _   |
+6   is  be  AUX VBZ Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin   6   cop _   _   _
+7   mine    my  PRON    PRP Number=Sing|Person=1|Poss=Yes|PronType=Prs	0   root    _   _   Number=Sing|Person=1|Poss=Yes|PronType=Prs|Mood=Ind|Tense=Pres
+~~~
+here "cat" is the subject of the outer clause and the verb in the inner clause agrees
+with a 3rd person singular argument, so it gets an abstract node. Note that if the verb
+was in past tense, no abstract node was created due to lack of agreement features.
 
 #### Gaps
 
+<!--- TODO: other abstract nodes in cases of gaps --->
 
 ## Annotation Guidelines
 
