@@ -1,5 +1,24 @@
 # Morphosyntax Parsing Shared Task Data Annotation Guidelines
 
+## Table of Contents
+
+1. [Introduction](https://github.com/omagolda/msud-docs/blob/main/docs.md#introduction)
+   1. [Motivation](https://github.com/omagolda/msud-docs/blob/main/docs.md#motivation)
+   2. [Principles](https://github.com/omagolda/msud-docs/blob/main/docs.md#principles)
+      1. Independence from Word Boundary
+      2. Content-Function Divide
+      3. Crosslingual Parallelism
+      4. Minimal Deviation from CoNLL-U
+2. [Schema Description](https://github.com/omagolda/msud-docs/blob/main/docs.md#schema-description)
+   1. File Format
+   2. [Morpho-Syntactic Features](https://github.com/omagolda/msud-docs/blob/main/docs.md#morpho-syntactic-features)
+      1. [Feature Inventory](https://github.com/omagolda/msud-docs/blob/main/docs.md#features-inventory)
+   3. [Content Nodes](https://github.com/omagolda/msud-docs/blob/main/docs.md#content-nodes)
+      1. Abstract Nodes
+      2. Gaps
+3. [The Annotation Process](https://github.com/omagolda/msud-docs/blob/main/docs.md#the-annotation-process)
+   1. Conversion from UD
+
 ## Introduction
 
 In this documentation, we first explain the general principles of MSP, and then show the feature set and how to convert a regular UD treebank to MSP, with the example of English.
@@ -43,20 +62,17 @@ MISC, are defined exactly the same as in UD.
 
 ### Morpho-Syntactic Features
 
-quick link: [feature inventory](https://github.com/omagolda/msud-docs/blob/pages-source/inventory.md)
-
 As the key characteristics of morpho-syntactic dependency trees, morpho-syntactic
-features are modelled after the morphological features in UD and may be
+features (MS features) are modelled after the morphological features in UD and may be
 viewed as a generalization of them. [Like in UD]( https://universaldependencies.org/u/overview/morphology.html),
 the features are an unordered set of name and value pairs separated by pipes, of the
 structure `Name1=Value1|Name2=Value2`. Most feature names and values are equivalent to
-those in UD, for example `Gender=Masc`, `Voice=Pass`, etc. But there are also a couple
-of new feature type, see below for details.
+those in UD, for example `Gender=Masc`, `Voice=Pass`, etc.
 
-However, morpho-syntactic features also differ from morphological features in a couple
+However, MS features also differ from morphological features in a couple
 important characteristics:
-* The features are only defined for content nodes (see below).
-  * Function words should not have morpho-syntactic features. All the information they
+* The features are only defined for content nodes (see below)._
+  * Function words should not have MS features. All the information they
   convey should be expressed as features on the relevant content node.
   * Note: since the file format is a modified version of UD's CoNLL-U, function words
   may appear in the final output, their MS-feats column should be `_`. This is  in
@@ -82,10 +98,33 @@ strings. They can contain:
   manifestation of the English phrase _if and when_ when connecting two clauses,
   * and a disjunction of values, `Tense=or(Past,Fut)`.
 
-[^msf1]: This is in contrast with the verb _yürümebilir_ (literally “he is able to not walk”,
-i.e., he may not walk), where the negation pertains to the verb itself and should be
-tagged as `Mood=Pot|Polarity=Neg`.
+The categories of words to be "consumed" into MS features are usually: auxiliaries,
+determiners, adpositions, conjunctions and subordinators, and some particles. These
+categories may not neatly correspond to UD POS tags. Some clearly do, like auxiliaries
+(POS tag `AUX`), while others, like `DET` may include also contentful word, like _all_
+and _every_. Some POS tags like `ADV` mix many contentful words (_nicely_, _rapidly_,
+_often_, etc.) with a few that serve as conjunctions (_when_, _then_, etc.), and in 
+rare cases the same word may be considered functional or contentful depending on the
+context.[^msf2]
 
+[^msf1]: This is in contrast with the verb _yürümebilir_ (literally “he is able to not
+walk”, i.e., he may not walk), where the negation pertains to the verb itself and should
+be tagged as `Mood=Pot|Polarity=Neg`.
+
+[^msf2]: Compare the word _then_ in the sentence _if you want, then I'll do it_
+(functional) to the same word in _I didn't know what to do, then I understood_ (_then_ 
+stands for "after some time" hence contentful).
+
+#### Feature Inventory
+
+quick link: [inventory of relation features](https://github.com/omagolda/msud-docs/blob/pages-source/inventory.md)
+
+Since the MS features are a generalization of UD's morphological features, their types
+and possible values are also highly similar with that of [UD's features](https://universaldependencies.org/u/feat/index.html).
+Therefore, for most features, the list in UD is sufficient in characterizing content
+nodes in MS trees as well.
+The most prominent exceptions to this are the `Case` feature, that exists in UD but is
+vastly expanded here, and the new `RelType` feature.
 
 ### Content Nodes
 
@@ -176,14 +215,15 @@ So node `7.1` is created to carry the feature of the function word _from_.
 <!--- TODO: other gap cases: "orphan" relation, others?
 also, guidelines for "weird" rels like "fixed" --->
 
-## Annotation Guidelines
+## The Annotation Process
 
 ### Conversion from UD
 
 #### General
 
 - create a new column
-- decide what your content words and your function words are (by UPOS) <!--- TODO: not necessarily only UPOS --->
+- decide what your content words and your function words are (by UPOS)
+<!--- TODO: not necessarily only UPOS --->
 - go through your function words and classify them according to UPOS, relation, and maybe lemma
 - for each of these categories, figure out the morphosyntactic feature and place it on the head content word
 
