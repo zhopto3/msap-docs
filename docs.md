@@ -98,6 +98,13 @@ strings. They can contain:
   manifestation of the English phrase _if and when_ when connecting two clauses,
   * and a disjunction of values, `Tense=or(Past,Fut)`.
 
+The mapping from morpho-syntactic constructions to features does not have to be
+one-to-one. In cases where several constructions have the exact some meaning (e.g., 
+they differ in geographic distribution, register or personal preferences), it is
+perfectly suitable to assign the same feature combination to both of them. For example,
+in Spanish, both _comiera_ and _comiese_ will be assigned `Mood=Sub|Tense=Past|Aspect=Imp|VerbForm=Fin`
+(remember that the agreement features should appear only on the relevant argument).
+
 The categories of words to be "consumed" into MS features are usually: auxiliaries,
 determiners, adpositions, conjunctions and subordinators, and some particles. These
 categories may not neatly correspond to UD POS tags. Some clearly do, like auxiliaries
@@ -124,7 +131,36 @@ and possible values are also highly similar with that of [UD's features](https:/
 Therefore, for most features, the list in UD is sufficient in characterizing content
 nodes in MS trees as well.
 The most prominent exceptions to this are the `Case` feature, that exists in UD but is
-vastly expanded here, and the new `RelType` feature.
+vastly expanded here, and the new `RelType` feature. 
+
+As for the former, the `Case` feature characterizes the relation between a predicate and
+its argument, as marked on the argument. In line with the principle of independence from
+word boundaries, in MS trees this feature corresponds to traditional case morphemes
+as well as adpositions (these usually have `case` as `deprel` in UD trees) and coverbs
+when such exist. The inclusion of adpositions in determining the `Case` feature entails
+the expansions of cases possible in almost any language. Predicates in German, for 
+example, now have an elative case (indicating motion from the inside of the argument)
+expressed by the combination of the synthetic dative case and the periphrastic _aus_
+preposition.
+
+The same goes for the new `RelType` feature that characterizes predicate-predicate
+relations. It now incorporates information represented by conjunctions, adverbs, 
+adpositions and other function words in addition to inflectional morphemes that appear
+in some languages, like the consecutive inflection in Swahili. Here as well, the result
+is a flurry of possible values for this feature as languages employ scores of function
+words to characterize predicate-predicate relations.
+
+"[inventory.md](https://github.com/omagolda/msud-docs/blob/pages-source/inventory.md)"
+details a set of universal values for both the `Case` and `RelType` features. These 
+features do not cover all possible relations, and in some cases when there are 
+adpositions or conjunctions that do not correspond to any of the features, the value of
+the respective feature should be the canonical citation form of the function word 
+transliterated into latin letters in quotation marks. For example, the word _books_ in 
+the phrase _about books_ should be assigned the MS features `Number=Plur|Case="about"`.
+
+A mapping from adpositions and conjunctions to the features in "inventory.md" should be 
+created as part of the annotation process. Note that the mapping does not have to be 
+one-to-one.
 
 ### Content Nodes
 
