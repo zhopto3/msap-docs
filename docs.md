@@ -176,6 +176,9 @@ For example, in the sentence _the quick brown fox jumps over the lazy dog_ there
 content words (quick, brown, fox, jump, lazy, dog) and 3 function words (the, over, the).
 <!--- we probably need a better example --->
 
+Note that copulas are not content words. In sentences with copulas refer to the nominal
+as the predicate and tag it with the features expressed by the copula.
+
 [^cn1]: In most languages, content nodes are equivalent to words. However, in some noun
 incorporating languages open class nouns can appear as morphemes concatenated to another
 content node that is the verb.
