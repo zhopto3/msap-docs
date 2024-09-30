@@ -82,8 +82,9 @@ important characteristics:
 marker, be it a morpheme or a word. So the content node _go_ in _will go_ should bear
 the feature `Tense=Fut`.
   * All applicable features should be marked on the respective content nodes, even if
-  expressed by non-concatenative means. E.g., the node _go_ in _did you go?_ should be
-  marked with `Mood=Int` even though it is expressed mostly by word order.
+  expressed by non-concatenative means (as long as they are grammatical). E.g., the node
+  _go_ in _did you go?_ should be marked with `Mood=Int,Ind` even though the
+  interrogative mood is expressed mostly by word order.
 * Features should be applied only to their relevant node. In other words, no agreement
 features are needed, and in a phrase like _he goes_ only _he_ should bear
 `Person=3|Number=Sing`, and _goes_ should have only `Tense=Pres` (and other features if
@@ -136,7 +137,7 @@ vastly expanded here, and the new `RelType` feature.
 As for the former, the `Case` feature characterizes the relation between a predicate and
 its argument, as marked on the argument. In line with the principle of independence from
 word boundaries, in MS trees this feature corresponds to traditional case morphemes
-as well as adpositions (these usually have `case` as `deprel` in UD trees) and coverbs
+as well as adpositions (these usually have `case` as DEPREL in UD trees) and coverbs
 when such exist. The inclusion of adpositions in determining the `Case` feature entails
 the expansions of cases possible in almost any language. Predicates in German, for 
 example, now have an elative case (indicating motion from the inside of the argument)
@@ -170,14 +171,18 @@ grammatical modification of another word.[^cn1] These content words should form 
 morpho-syntactic tree, and this is automatically true in most cases when converting UD
 data due to the fact that UD designates content words as heads, so they directly relate
 to one another (see exceptions below).
-<!--- fixed expressions that include a content word in addition to function words --->
+
+Note that copulas are not content words. In sentences with copulas refer to the nominal
+as the predicate and tag it with the features expressed by the copula.
 
 For example, in the sentence _the quick brown fox jumps over the lazy dog_ there are 6
 content words (quick, brown, fox, jump, lazy, dog) and 3 function words (the, over, the).
 <!--- we probably need a better example --->
 
-Note that copulas are not content words. In sentences with copulas refer to the nominal
-as the predicate and tag it with the features expressed by the copula.
+In headless expressions, i.e., cases where one of the `fixed`, `compound`, `flat` or 
+`goeswith` DEPRELs are used, all words are judged together to either be of content or of 
+function. Usually such cases will be contentful, but sometimes a fixed expression can be 
+a multi-word adposition, for example _as well as_ and _because of_.
 
 [^cn1]: In most languages, content nodes are equivalent to words. However, in some noun
 incorporating languages open class nouns can appear as morphemes concatenated to another
@@ -250,6 +255,13 @@ should be annotated as:
 7.1    _    _   _   _   _   6   obl _   _   Case=Abl
 ~~~
 So node `7.1` is created to carry the feature of the function word _from_.
+
+Note that this strategy is not suitable when the missing element has non-missing
+arguments, for example in the phrase _Jon ate bananas and mary apples_. In these cases,
+usually characterized by the `orphan` DEPREL, addition of an abstract node will require
+adjustment of the HEAD column and this is beyond the current scope of this campaign in
+which we only add a `MS-feats` column at the end of each line. Our suggestion is then to
+not tag sentences with `orphan` DEPREL, at least not for this shared task.
 
 <!--- TODO: other gap cases: "orphan" relation, others?
 also, guidelines for "weird" rels like "fixed" --->
