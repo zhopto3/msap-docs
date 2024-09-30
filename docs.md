@@ -95,8 +95,9 @@ strings. They can contain:
   _I have been walking_,
   * a negation of a value, for example `Mood=not(Pot)` on the Turkish verb _yürüyemez_
   (“he can’t walk”) where the negation refers to the ability,[^msf1]
-  * a conjunction of values, for example `RelType=and(Cond,Temp)` that is the
-  manifestation of the English phrase _if and when_ when connecting two clauses,
+  * a conjunction of values, for example `Case=and(Cnd,Temp)` that is the
+  manifestation of the English phrase _if and when_ when connecting two clauses (see 
+  below for discussion on the `Case` feature),
   * and a disjunction of values, `Tense=or(Past,Fut)`.
 
 The mapping from morpho-syntactic constructions to features does not have to be
@@ -131,33 +132,36 @@ Since the MS features are a generalization of UD's morphological features, their
 and possible values are also highly similar with that of [UD's features](https://universaldependencies.org/u/feat/index.html).
 Therefore, for most features, the list in UD is sufficient in characterizing content
 nodes in MS trees as well.
-The most prominent exceptions to this are the `Case` feature, that exists in UD but is
-vastly expanded here, and the new `RelType` feature. 
+The most prominent exceptions to this is the expansion of the`Case` feature. 
 
-As for the former, the `Case` feature characterizes the relation between a predicate and
-its argument, as marked on the argument. In line with the principle of independence from
-word boundaries, in MS trees this feature corresponds to traditional case morphemes
-as well as adpositions (these usually have `case` as DEPREL in UD trees) and coverbs
-when such exist. The inclusion of adpositions in determining the `Case` feature entails
-the expansions of cases possible in almost any language. Predicates in German, for 
-example, now have an elative case (indicating motion from the inside of the argument)
-expressed by the combination of the synthetic dative case and the periphrastic _aus_
-preposition.
+Originally, the `Case` feature characterized the relation between a predicate and
+its argument, almost always a nominal, but for MS trees its role is expanded twice. First,
+In line with the principle of independence from word boundaries, in MS trees this feature
+corresponds to traditional case morphemes as well as adpositions (these usually have
+`case` as DEPREL in UD trees) and coverbs when such exist. The inclusion of adpositions
+in determining the `Case` feature entails the expansions of cases possible in almost any
+language. Predicates in German, for example, now have an elative case (indicating motion
+from the inside of the argument) expressed by the combination of the synthetic dative
+case and the periphrastic _aus_ preposition.
 
-The same goes for the new `RelType` feature that characterizes predicate-predicate
-relations. It now incorporates information represented by conjunctions, adverbs, 
-adpositions and other function words in addition to inflectional morphemes that appear
-in some languages, like the consecutive inflection in Swahili. Here as well, the result
-is a flurry of possible values for this feature as languages employ scores of function
-words to characterize predicate-predicate relations.
+The second expansion of the `Case` feature is that in MS trees this feature is also used
+to characterize predicate-predicate relations, hence it is applicable also to verbal
+nodes and it "consumes" also conjunctions and subordinators. So _fell_ in _I cried
+until I fell asleep_ and _today_ in _It is true until today_ will both get a `Case=Ttr`
+because they are both marked by the function word _until_.
+
+In general, the same function word/morpheme combination should be mapped to the same
+`Case` value, even if it serves multiple functions. For example, the Swahili preposition
+_na_ should be mapped only to `Case=Conj` even when it serves a function of introducing
+the agent of a passive verb.
 
 "[inventory.md](https://github.com/omagolda/msud-docs/blob/pages-source/inventory.md)"
-details a set of universal values for both the `Case` and `RelType` features. These 
-features do not cover all possible relations, and in some cases when there are 
-adpositions or conjunctions that do not correspond to any of the features, the value of
-the respective feature should be the canonical citation form of the function word 
-transliterated into latin letters in quotation marks. For example, the word _books_ in 
-the phrase _about books_ should be assigned the MS features `Number=Plur|Case="about"`.
+details a set of universal values for the `Case` feature. These feature does not cover
+all possible relations, and in some cases when there are adpositions or conjunctions that
+do not correspond to any of the features, the value of the respective feature should be
+the canonical citation form of the function word transliterated into latin letters in
+quotation marks. For example, the word _books_ in the phrase _about books_ should be
+assigned the MS features `Number=Plur|Case="about"`.
 
 A mapping from adpositions and conjunctions to the features in "inventory.md" should be 
 created as part of the annotation process. Note that the mapping does not have to be 
@@ -334,13 +338,9 @@ Modality
 concatenate all modalities
 
 ##### Get Features from Relations
-relevant are all children with case, mark, or cc, or where the lemma is in marker_feat_map, or in case_feat_map. Remove all children that are PART, unless they're "'s"
+relevant are all children with case, mark, or cc, or where the lemma is in case_feat_map. Remove all children that are PART, unless they're "'s"
 
-for nominals,
-* RelType are looked up in the feature map, for any child nodes with a mark relation, or that appear in the feature map
-* Case are looked up in the feature map, for any child nodes with a case relation, or that appear in the feature map
-for verbs, 
-* all child nodes are looked up in the marker feature map, and as a backup in the case feature map
+Then case features are looked up in the feature map.
 
 for verbs,
 * copy existing features if they have not been set
@@ -351,7 +351,7 @@ for nominals and adjectives and adverbs:
     * a: Definite Ind
     * the: Definite Def
     * another: Definite Ind
-    * no: Definite Ind and Polaritz Neg
+    * no: Definite Ind and Polarity Neg
     * this: Dem Prox
     * that: Dem Dist
 * for adjectives and averbs,

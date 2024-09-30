@@ -5,7 +5,7 @@ import utils
 from typing import List
 from copy import deepcopy
 from collections import defaultdict
-from eng_relations import case_feat_map, marker_feat_map
+from eng_relations import case_feat_map
 
 lang = 'eng'
 bank = 'GENTLE'
@@ -56,14 +56,13 @@ def create_abstract_nsubj(head: conllu.Token, auxes: List[conllu.Token]):
 
 
 def get_rel_feat(word): # try to get the relation feature from the marker feature map, if not - from the case feature map, if not - return the word itself
-    return marker_feat_map.get(word, case_feat_map.get(word, word))
+    return case_feat_map.get(word, word)
 
 
 def get_relation_feats(relation_nodes: List[conllu.Token], verb=True, clause=False) -> dict:
     '''
-    Generating morpho_syntactic features for relations. For nominals, cases are put under the 'Case' feature, and
-    conjunctions under 'RelType'. For verbs, all values are under 'RelType'.
-    The mapping from words to features is in 'eng_relations.py' and should be updated there.
+    Generating morpho_syntactic features for relations.
+    The mapping from words (or fixed expressions) to features is in 'eng_relations.py' and should be updated there.
     '''
     feats = {}
 
@@ -71,28 +70,7 @@ def get_relation_feats(relation_nodes: List[conllu.Token], verb=True, clause=Fal
     for node in relation_nodes: # if the node is a fixed node, take its fixed lemma, otherwise take its lemma
         node['lemma'] = node.get('fixed lemma', node.get('lemma'))
 
-    if verb:
-        marker_nodes = relation_nodes
-        feats['RelType'] = ','.join([get_rel_feat(node['lemma']) for node in marker_nodes]) # concatenate the features of the nodes
-    else:
-        marker_nodes = [node for node in relation_nodes # if the node has a mark relation or is in the marker feature map
-                    if node['deprel'] == 'mark'
-                    or node['lemma'] in marker_feat_map]
-        case_nodes = [node for node in relation_nodes # if the node has a case relation or is in the case feature map
-                    if node['deprel'] == 'case'
-                    or node['lemma'] in case_feat_map]
-
-        if node not in marker_nodes and node not in relation_nodes and node['upos'] == 'ADP': # adpositions that aren't in either map
-            if clause: # if it's a noun heading a clause,  assume adpositions are markers by default
-                case_nodes.append(node)
-            else: #adpositions are cases 
-                marker_nodes.append(node)
-
-        assert not [node for node in relation_nodes if node not in marker_nodes and node not in case_nodes]
-        if marker_nodes:
-            feats['RelType'] = ','.join([marker_feat_map.get(node['lemma'], node['lemma']) for node in marker_nodes]) # concatenate the features of the nodes
-        if case_nodes:
-            feats['Case'] = ','.join([case_feat_map.get(node['lemma'], node['lemma']) for node in case_nodes]) # concatenate the features of the nodes
+    feats['Case'] = ','.join([get_rel_feat(node['lemma']) for node in relation_nodes])
 
     return feats
 
@@ -320,7 +298,6 @@ def apply_grammar(head: conllu.Token, children: List[conllu.Token]):
     # the last condition is complicated to exclude infinitive "to" while allowing case "'s"
     relation_nodes = [child for child in children if
                       (child['deprel'] in {'case', 'mark', 'cc'}
-                      or child['lemma'] in marker_feat_map
                       or child['lemma'] in case_feat_map)
                       and (child['upos'] != 'PART' or child['lemma'] == "'s")]
     if relation_nodes:
