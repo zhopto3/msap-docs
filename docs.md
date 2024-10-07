@@ -66,7 +66,7 @@ As the key characteristics of morpho-syntactic dependency trees, morpho-syntacti
 features (MS features) are modelled after the morphological features in UD and may be
 viewed as a generalization of them. [Like in UD]( https://universaldependencies.org/u/overview/morphology.html),
 the features are an unordered set of name and value pairs separated by pipes, of the
-structure `Name1=Value1|Name2=Value2`. Most feature names and values are equivalent to
+structure `Name1=Value1|Name2=Value2`.[^msf0] Most feature names and values are equivalent to
 those in UD, for example `Gender=Masc`, `Voice=Pass`, etc.
 
 However, MS features also differ from morphological features in a couple
@@ -115,6 +115,9 @@ and _every_. Some POS tags like `ADV` mix many contentful words (_nicely_, _rapi
 _often_, etc.) with a few that serve as conjunctions (_when_, _then_, etc.), and in 
 rare cases the same word may be considered functional or contentful depending on the
 context.[^msf2]
+
+[^msf0]: The feature set in unordered in theory but in practice the features are ordered
+alphabetically by feature name, just to make the annotations consistent.
 
 [^msf1]: This is in contrast with the verb _yürümebilir_ (literally “he is able to not
 walk”, i.e., he may not walk), where the negation pertains to the verb itself and should

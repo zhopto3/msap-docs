@@ -374,6 +374,11 @@ def get_where_to_add(added_nodes, id2idx): # get where to add the abstract nsubj
             res.append(id2idx[idx])
     return res
 
+def order_alphabetically(feats: str):
+    feats = feats.split('|')
+    feats = sorted(feats)
+    return '|'.join(feats)
+
 if __name__ == '__main__':
     filepath = os.path.join(ud_dir, lang, bank, splits[bank]['test'])
     out_path = os.path.join('UD+', lang, bank, 'test.conllu')
@@ -418,6 +423,9 @@ if __name__ == '__main__':
                 # function nodes end up with empty ms-feats
                 else:
                     node['ms feats'] = node.get('ms feats', None)
+
+                # sort alphabetically the MS features of all nodes
+                node['ms feats'] = order_alphabetically(node['ms feats'])
             assert utils.verify_treeness(parse_list)
 
             to_write = parse_list.serialize()
