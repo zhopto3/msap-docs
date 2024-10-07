@@ -87,24 +87,25 @@ the feature `Tense=Fut`.
   interrogative mood is expressed mostly by word order.
 * Features should be applied only to their relevant node. In other words, no agreement
 features are needed, and in a phrase like _he goes_ only _he_ should bear
-`Person=3|Number=Sing`, and _goes_ should have only `Tense=Pres` (and other features if
+`Number=Sing|Person=3`, and _goes_ should have only `Tense=Pres` (and other features if
 relevant).
 * The feature structure is not flat. In other words, features are not necessarily single 
 strings. They can contain:
-  * a list of values separated by a semicolon, for example `Aspect=Perf;Prog` on the verb of the English clause
-  _I have been walking_,
+  * a list of values separated by a semicolon, for example `Aspect=Perf;Prog` on the verb
+  of the English clause _I have been walking_
   * a negation of a value, for example `Mood=not(Pot)` on the Turkish verb _yürüyemez_
-  (“he can’t walk”) where the negation refers to the ability,[^msf1]
-  * a conjunction of values, for example `Case=and(Cnd,Temp)` that is the
+  (“he can’t walk”) where the negation refers to the ability[^msf1]
+  * a conjunction of values. This mechanism is to be used only in cases of explicit
+  conjunction of grammatical constructions, for example `Case=and(Cnd,Temp)` is the
   manifestation of the English phrase _if and when_ when connecting two clauses (see 
-  below for discussion on the `Case` feature),
-  * and a disjunction of values, `Tense=or(Past,Fut)`.
+  below for discussion on the `Case` feature)
+  * and a disjunction of values, `Tense=or(Past,Fut)`
 
 The mapping from morpho-syntactic constructions to features does not have to be
 one-to-one. In cases where several constructions have the exact some meaning (e.g., 
 they differ in geographic distribution, register or personal preferences), it is
 perfectly suitable to assign the same feature combination to both of them. For example,
-in Spanish, both _comiera_ and _comiese_ will be assigned `Mood=Sub|Tense=Past|Aspect=Imp|VerbForm=Fin`
+in Spanish, both _comiera_ and _comiese_ will be assigned `Aspect=Imp|Mood=Sub|Tense=Past|VerbForm=Fin`
 (remember that the agreement features should appear only on the relevant argument).
 
 The categories of words to be "consumed" into MS features are usually: auxiliaries,
@@ -164,7 +165,7 @@ all possible relations, and in some cases when there are adpositions or conjunct
 do not correspond to any of the features, the value of the respective feature should be
 the canonical citation form of the function word transliterated into latin letters in
 quotation marks. For example, the word _books_ in the phrase _about books_ should be
-assigned the MS features `Number=Plur|Case="about"`.
+assigned the MS features `Case="about"|Number=Plur`.
 
 A mapping from adpositions and conjunctions to the features in "inventory.md" should be 
 created as part of the annotation process. Note that the mapping does not have to be 
@@ -211,14 +212,14 @@ The most common use-case of abstract nodes is when pronouns are dropped. For exa
 Basque, the UD nodes:
 ~~~ conllu
 4	ziurtatu	ziurtatu	VERB	_	Aspect=Perf|VerbForm=Part	0	root	_	_
-5	zuten	edun	AUX	_	Mood=Ind|Tense=Past|Number[abs]=Sing|Number[erg]=Plur|Person[abs]=3|Person[erg]=3|VerbForm=Fin	4	aux	_	ReconstructedLemma=Yes
+5	zuten	edun	AUX	_	Mood=Ind|Number[abs]=Sing|Number[erg]=Plur|Person[abs]=3|Person[erg]=3|Tense=Past|VerbForm=Fin	4	aux	_	ReconstructedLemma=Yes
 ~~~
 should be tagged as:
 ~~~ conllu
 4	ziurtatu	ziurtatu	VERB	_	Aspect=Perf|VerbForm=Part	0	root	_	_   Aspect=Perf|Mood=Ind|Tense=Past|VerbForm=Fin   
-5	zuten	edun	AUX	_	Mood=Ind|Tense=Past|Number[abs]=Sing|Number[erg]=Plur|Person[abs]=3|Person[erg]=3|VerbForm=Fin	4	aux	_	ReconstructedLemma=Yes  _
-5.1 _   _   _   _   _   4   nsubj   _   _   Number=Plur|Person=3|Case=Erg
-5.2 _   _   _   _   _   4   obj _   _   Number=Sing|Person=3|Case=Abs
+5	zuten	edun	AUX	_	Mood=Ind|Number[abs]=Sing|Number[erg]=Plur|Person[abs]=3|Person[erg]=3|Tense=Past|VerbForm=Fin	4	aux	_	ReconstructedLemma=Yes  _
+5.1 _   _   _   _   _   4   nsubj   _   _   Case=Erg|Number=Plur|Person=3
+5.2 _   _   _   _   _   4   obj _   _   Case=Abs|Number=Sing|Person=3
 ~~~
 Note that node `5` now doesn't have MS-feats (the last column) and therefore it will be
 dropped from the MS tree.
@@ -237,13 +238,13 @@ not contain an abstract node for the non-existent subject although one is unders
 Abstract nodes are also to be used when the argument is outside the clause, for example:
 ~~~ conllu
 1   the the DET DT  _   2   det _   _   _
-2   cat cat NOUN    NN  Number=Sing 7   nsubj   _   _   Number=Sing|Definite=Def
+2   cat cat NOUN    NN  Number=Sing 7   nsubj   _   _   Definite=Def|Number=Sing
 3   that    that    SCONJ   IN  _   4   mark _  _   _
 4   meows   meow    VERB    VBZ Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin   2   acl:relcl   _   _   Mood=Ind|Tense=Pres|VerbForm=Fin   
 4.1 _   _   _   _   _   4   nsubj   _   _   Number=Sing|Person=3
 5   nicely  nicely  ADC RB  _   4   advmod  _   _   |
 6   is  be  AUX VBZ Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin   6   cop _   _   _
-7   mine    my  PRON    PRP Number=Sing|Person=1|Poss=Yes|PronType=Prs	0   root    _   _   Number=Sing|Person=1|Poss=Yes|PronType=Prs|Mood=Ind|Tense=Pres
+7   mine    my  PRON    PRP Number=Sing|Person=1|Poss=Yes|PronType=Prs	0   root    _   _   Mood=Ind|Number=Sing|Person=1|Poss=Yes|PronType=Prs|Tense=Pres
 ~~~
 here "cat" is the subject of the outer clause and the verb in the inner clause agrees
 with a 3rd person singular argument, so it gets an abstract node. Note that if the verb
