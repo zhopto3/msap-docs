@@ -83,7 +83,7 @@ marker, be it a morpheme or a word. So the content node _go_ in _will go_ should
 the feature `Tense=Fut`.
   * All applicable features should be marked on the respective content nodes, even if
   expressed by non-concatenative means (as long as they are grammatical). E.g., the node
-  _go_ in _did you go?_ should be marked with `Mood=Int,Ind` even though the
+  _go_ in _did you go?_ should be marked with `Mood=Int;Ind` even though the
   interrogative mood is expressed mostly by word order.
 * Features should be applied only to their relevant node. In other words, no agreement
 features are needed, and in a phrase like _he goes_ only _he_ should bear
@@ -91,7 +91,7 @@ features are needed, and in a phrase like _he goes_ only _he_ should bear
 relevant).
 * The feature structure is not flat. In other words, features are not necessarily single 
 strings. They can contain:
-  * a list of values, for example `Aspect=Perf,Prog` on the verb of the English clause
+  * a list of values separated by a semicolon, for example `Aspect=Perf;Prog` on the verb of the English clause
   _I have been walking_,
   * a negation of a value, for example `Mood=not(Pot)` on the Turkish verb _yürüyemez_
   (“he can’t walk”) where the negation refers to the ability,[^msf1]

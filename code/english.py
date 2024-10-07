@@ -70,7 +70,7 @@ def get_relation_feats(relation_nodes: List[conllu.Token], verb=True, clause=Fal
     for node in relation_nodes: # if the node is a fixed node, take its fixed lemma, otherwise take its lemma
         node['lemma'] = node.get('fixed lemma', node.get('lemma'))
 
-    feats['Case'] = ','.join([get_rel_feat(node['lemma']) for node in relation_nodes])
+    feats['Case'] = ';'.join([get_rel_feat(node['lemma']) for node in relation_nodes])
 
     return feats
 
@@ -174,7 +174,7 @@ def get_nTAM_feats(aux_nodes: List[conllu.Token], head_feats: dict, verb=True) -
 
     if 'have' in aux_lemmas:
         if not verb or (head_feats['VerbForm'], head_feats['Tense']) == ('Part', 'Past'): # if the head is not a verb or the verb form is participle and the tense is past
-            feats['Aspect'] += ',Perf' 
+            feats['Aspect'] += ';Perf'
         else:
             raise ValueError('untreated have-type aux')
 
@@ -195,10 +195,10 @@ def get_nTAM_feats(aux_nodes: List[conllu.Token], head_feats: dict, verb=True) -
         response = utils.get_response(['c', 'f'],
                                 f'what does the "would" stand for in this sentence:\n"{parse_tree.metadata["text"]}"\nhead:"{head["form"]}"\nchildren:"{" ".join([child["form"] for child in children])}"\nc - conditional, f - future in the past')
         if response == 'c':
-            feats['Mood'] += ',Cnd'
+            feats['Mood'] += ';Cnd'
         else:
             feats['Tense'] = 'Past'
-            feats['Aspect'] += ',Prosp'
+            feats['Aspect'] += ';Prosp'
     aux_lemmas.discard('would')
 
     # treatment of modality
@@ -208,7 +208,7 @@ def get_nTAM_feats(aux_nodes: List[conllu.Token], head_feats: dict, verb=True) -
             response = utils.get_response(['c', 'p'],
                                     f'what does the "could" stand for in this sentence:\n"{parse_tree.metadata["text"]}"\nhead:"{head["form"]}"\nchildren:"{" ".join([child["form"] for child in children])}"\nc - conditional, p - past')
             if response == 'c':
-                feats['Mood'] += ',Cnd'
+                feats['Mood'] += ';Cnd'
             else:
                 feats['Tense'] = 'Pst'
 
@@ -221,8 +221,8 @@ def get_nTAM_feats(aux_nodes: List[conllu.Token], head_feats: dict, verb=True) -
             del feats['Polarity']
         aux_lemmas.discard('not')
 
-        feats['Mood'] += ',' + modality # add the modality to the mood
-        feats['Mood'] = feats['Mood'].strip(',') # clean up the mood
+        feats['Mood'] += ';' + modality  # add the modality to the mood
+        feats['Mood'] = feats['Mood'].strip(';')  # clean up the mood
 
     else:
         aux_lemmas.discard('not')
@@ -230,7 +230,7 @@ def get_nTAM_feats(aux_nodes: List[conllu.Token], head_feats: dict, verb=True) -
     if aux_lemmas:
         raise ValueError(f'untreated auxiliaries. their lemmas: {aux_lemmas}')
 
-    feats = {k: v.strip(',') for k, v in feats.items() if v}
+    feats = {k: v.strip(';') for k, v in feats.items() if v}
 
     return feats
 
