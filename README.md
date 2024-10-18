@@ -5,19 +5,19 @@
 1. [Introduction](https://github.com/omagolda/msud-docs/blob/main/docs.md#introduction)
    1. [Motivation](https://github.com/omagolda/msud-docs/blob/main/docs.md#motivation)
    2. [Principles](https://github.com/omagolda/msud-docs/blob/main/docs.md#principles)
-      1. Independence from Word Boundary
-      2. Content-Function Divide
-      3. Crosslingual Parallelism
-      4. Minimal Deviation from CoNLL-U
-2. [Schema Description](https://github.com/omagolda/msud-docs/blob/main/docs.md#schema-description)
-   1. File Format
+      1. [Independence from Word Boundaries](https://github.com/omagolda/msud-docs/blob/main/docs.md#independence-from-word-boundaries)
+      2. [Content-Function Divide](https://github.com/omagolda/msud-docs/blob/main/docs.md#content-function-divide)
+      3. [Crosslingual Parallelism](https://github.com/omagolda/msud-docs/blob/main/docs.md#crosslingual-parallelism)
+      4. [Minimal Deviation from CoNLL-U](https://github.com/omagolda/msud-docs/blob/main/docs.md#minimal-deviation-from-conll-u)
+2. [Schema Description](https://github.com/omagolda/msud-docs/blob/main/docs.md#file-format)
+   1. [File Format](https://github.com/omagolda/msud-docs/blob/main/docs.md#morpho-syntactic-features)
    2. [Morpho-Syntactic Features](https://github.com/omagolda/msud-docs/blob/main/docs.md#morpho-syntactic-features)
       1. [Feature Inventory](https://github.com/omagolda/msud-docs/blob/main/docs.md#features-inventory)
    3. [Content Nodes](https://github.com/omagolda/msud-docs/blob/main/docs.md#content-nodes)
-      1. Abstract Nodes
-      2. Gaps
+      1. [Abstract Nodes](https://github.com/omagolda/msud-docs/blob/main/docs.md#abstract-nodes)
+      2. [Gaps](https://github.com/omagolda/msud-docs/blob/main/docs.md#gaps)
 3. [The Annotation Process](https://github.com/omagolda/msud-docs/blob/main/docs.md#the-annotation-process)
-   1. Conversion from UD
+   1. [Conversion from UD](https://github.com/omagolda/msud-docs/blob/main/docs.md#conversion-from-ud)
 
 ## Introduction
 
@@ -31,7 +31,7 @@ We suggest defining the content-function boundary to differentiate 'morphologica
 
 ### Principles
 
-#### Independence of Word Boundary
+#### Independence from Word Boundaries
 
 Delimiting syntactically relevant words gets exponentially more complicated the less isolating languages are. Thus, this operation, which is as simple as breaking the text on white spaces for English, is borderline impossible for polysynthetic languages, in which a single word may be composed of several lexemes that have predicate-argument relations. This reflects the fact that despite the presumed role of words in contemporary linguistics, there is no consensus on a coherent cross-lingual definition of words. We will thus avoid (most) theoretical debates on word boundaries, and solve much of the word segmentation inconsistencies that occur in UD, either across languages, e.g., Japanese is treated as isolating and Korean as agglutinative, even though they are very similar typologically, or across treebanks of the same language, e.g., the different treebanks for Hebrew segment and attribute different surface forms for clitics.
 
