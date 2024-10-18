@@ -2,22 +2,22 @@
 
 ## Table of Contents
 
-1. [Introduction](https://github.com/omagolda/msud-docs/blob/main/readme.md#introduction)
-   1. [Motivation](https://github.com/omagolda/msud-docs/blob/main/readme.md#motivation)
-   2. [Principles](https://github.com/omagolda/msud-docs/blob/main/readme.md#principles)
-      1. [Independence from Word Boundaries](https://github.com/omagolda/msud-docs/blob/main/readme.md#independence-from-word-boundaries)
-      2. [Content-Function Divide](https://github.com/omagolda/msud-docs/blob/main/readme.md#content-function-divide)
-      3. [Crosslingual Parallelism](https://github.com/omagolda/msud-docs/blob/main/readme.md#crosslingual-parallelism)
-      4. [Minimal Deviation from CoNLL-U](https://github.com/omagolda/msud-docs/blob/main/readme.md#minimal-deviation-from-conll-u)
-2. [Schema Description](https://github.com/omagolda/msud-docs/blob/main/readme.md#file-format)
-   1. [File Format](https://github.com/omagolda/msud-docs/blob/main/readme.md#morpho-syntactic-features)
-   2. [Morpho-Syntactic Features](https://github.com/omagolda/msud-docs/blob/main/readme.md#morpho-syntactic-features)
-      1. [Feature Inventory](https://github.com/omagolda/msud-docs/blob/main/readme.md#features-inventory)
-   3. [Content Nodes](https://github.com/omagolda/msud-docs/blob/main/readme.md#content-nodes)
-      1. [Abstract Nodes](https://github.com/omagolda/msud-docs/blob/main/readme.md#abstract-nodes)
-      2. [Gaps](https://github.com/omagolda/msud-docs/blob/main/readme.md#gaps)
-3. [The Annotation Process](https://github.com/omagolda/msud-docs/blob/main/readme.md#the-annotation-process)
-   1. [Conversion from UD](https://github.com/omagolda/msud-docs/blob/main/readme.md#conversion-from-ud)
+1. [Introduction](https://github.com/omagolda/msud-docs/blob/main/README.md#introduction)
+   1. [Motivation](https://github.com/omagolda/msud-docs/blob/main/README.md#motivation)
+   2. [Principles](https://github.com/omagolda/msud-docs/blob/main/README.md#principles)
+      1. [Independence from Word Boundaries](https://github.com/omagolda/msud-docs/blob/main/README.md#independence-from-word-boundaries)
+      2. [Content-Function Divide](https://github.com/omagolda/msud-docs/blob/main/README.md#content-function-divide)
+      3. [Crosslingual Parallelism](https://github.com/omagolda/msud-docs/blob/main/README.md#crosslingual-parallelism)
+      4. [Minimal Deviation from CoNLL-U](https://github.com/omagolda/msud-docs/blob/main/README.md#minimal-deviation-from-conll-u)
+2. [Schema Description](https://github.com/omagolda/msud-docs/blob/main/README.md#file-format)
+   1. [File Format](https://github.com/omagolda/msud-docs/blob/main/README.md#morpho-syntactic-features)
+   2. [Morpho-Syntactic Features](https://github.com/omagolda/msud-docs/blob/main/README.md#morpho-syntactic-features)
+      1. [Feature Inventory](https://github.com/omagolda/msud-docs/blob/main/README.md#features-inventory)
+   3. [Content Nodes](https://github.com/omagolda/msud-docs/blob/main/README.md#content-nodes)
+      1. [Abstract Nodes](https://github.com/omagolda/msud-docs/blob/main/README.md#abstract-nodes)
+      2. [Gaps](https://github.com/omagolda/msud-docs/blob/main/README.md#gaps)
+3. [The Annotation Process](https://github.com/omagolda/msud-docs/blob/main/README.md#the-annotation-process)
+   1. [Conversion from UD](https://github.com/omagolda/msud-docs/blob/main/README.md#conversion-from-ud)
 
 ## Introduction
 
