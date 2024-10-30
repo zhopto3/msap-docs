@@ -1,6 +1,10 @@
 """
 usage (launch from msap-docs directory):
 python code.italian.italian SOURCE_TREEBANK.conllu OUTPUT_FILEPATH
+
+e.g.
+
+python code.italian.italian data/italian/dev.conllu data/italian/dev.out.conllu
 """
 import code.utils as utils
 import code.italian.ita_pipeline as pipeline
