@@ -1,4 +1,3 @@
-
 import os
 import conllu
 from consts import *
@@ -118,7 +117,7 @@ def get_nTAM_feats(aux_nodes: List[conllu.Token], head_feats: dict, verb=True) -
     # aux_lemmas.discard('not')
 
     if 'do' in aux_lemmas:
-        if not verb: 
+        if not verb:
             raise ValueError('a noun with "do"?!')
 
         do_node = [aux for aux in aux_nodes if aux['lemma'] == 'do'] # get the node with the lemma 'do'
@@ -141,7 +140,7 @@ def get_nTAM_feats(aux_nodes: List[conllu.Token], head_feats: dict, verb=True) -
             higher_be = be_nodes[0] # take the only 'be' node
 
         elif len(be_nodes) == 2:
-            feats['Aspect'] = 'Prog' 
+            feats['Aspect'] = 'Prog'
             if verb:
                 feats['Voice'] = 'Pass'
             higher_be = [node for node in be_nodes if not node['form'].endwith('ing')][0] # take the 'be' node that is not a gerund
@@ -163,7 +162,7 @@ def get_nTAM_feats(aux_nodes: List[conllu.Token], head_feats: dict, verb=True) -
                     feats['VerbForm'] = higher_be['feats']['VerbForm']
     aux_lemmas.discard('be')
 
-    if 'get' in aux_lemmas: 
+    if 'get' in aux_lemmas:
         get_node = [aux for aux in aux_nodes if aux['lemma'] == 'get'][0] # get the 'get' node
         assert 'pass' in get_node['deprel']
         feats['Voice'] = 'Pass'
@@ -295,12 +294,14 @@ def apply_grammar(head: conllu.Token, children: List[conllu.Token]):
         if not head['ms feats'].get('Polarity', None): head['ms feats']['Polarity'] = 'Pos' #set Polarity to Pos by default
         if not head['ms feats'].get('VerbForm', None): head['ms feats']['VerbForm'] = 'Fin' #set VerbForm to Fin by default
 
-    # if there are cases or conjunctures "consume" them as well
+        # TODO: aggiungere diatesi e aspetto?
+
+    # if there are cases or conjunctions "consume" them as well
     # the last condition is complicated to exclude infinitive "to" while allowing case "'s"
     relation_nodes = [child for child in children if
                       (child['deprel'] in {'case', 'mark', 'cc'}
                       or child['lemma'] in case_feat_map)
-                      and (child['upos'] != 'PART' or child['lemma'] == "'s")]
+                      and (child['upos'] != 'PART' or child['lemma'] == "'s")] # TODO: arianna inventa la lista di lemmi
     if relation_nodes:
         to_update = get_relation_feats(relation_nodes, verb=verb, clause=head['deprel'] in clausal_rels)
         if to_update and not head['ms feats']:
@@ -327,16 +328,17 @@ def apply_grammar(head: conllu.Token, children: List[conllu.Token]):
 
     elif noun or head['upos'] in {'ADV', 'ADJ'}:
         # treat determiners
-        det_nodes = [child for child in children if child['deprel'] == 'det']
+        det_nodes = [child for child in children if child['deprel'] == 'det'] #TODO: controlla det:predet
         if det_nodes:
-            assert len(det_nodes) == 1 # there should only be one determiner
+            assert len(det_nodes) == 1 # there should only be one determiner #TODO: cambia per l'italiano
             det_node = det_nodes[0]
             children = [node for node in children if node != det_node]
-            for lemma in determiners[det_node['lemma']]: # set the appropriate features to the head using the det_feats map
-                if lemma in head['ms feats']:
-                    det_feats = head['ms feats'][lemma]
+            # TODO: for feat_name, feat_value in determiners[det_node['lemma']]:
+            for feat in determiners[det_node['lemma']]: # set the appropriate features to the head using the det_feats map
+                if feat in head['ms feats']:
+                    det_feats = head['ms feats'][feat]
                     head['ms feats'][det_feats[0]] = det_feats[1]
-                    if len(det_feats) == 4:
+                    if len(det_feats) == 4: # TODO: controllare quando mai è lungo 4
                         head['ms feats'][det_feats[2]] = det_feats[3]
                 else:
                     print(f'a non treated determiner: "{det_node["lemma"]}"') # overlooked determiners
@@ -401,6 +403,7 @@ if __name__ == '__main__':
 
             heads = utils.span(parse_tree)
             assert utils.verify_span(heads)
+
             to_add = []
             for head, children in heads[::-1]:
                 head: conllu.Token = parse_list[id2idx[head]]
