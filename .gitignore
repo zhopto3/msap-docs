@@ -1,2 +1,8 @@
 # Virtual environments
 .venv/
+
+# VSCode specs
+*workspace
+
+# Python
+*__pycache__*
