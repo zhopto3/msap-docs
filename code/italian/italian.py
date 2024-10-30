@@ -3,9 +3,8 @@ usage (launch from msap-docs directory):
 python code.italian.italian SOURCE_TREEBANK.conllu OUTPUT_FILEPATH
 """
 import code.utils as utils
+import code.italian.ita_pipeline as pipeline
 import conllu
-
-
 
 
 if __name__ == '__main__':
@@ -22,12 +21,15 @@ if __name__ == '__main__':
 
 	with open(out_path, "w", encoding="utf-8") as fout:
 		for tree, tokenlist in zip(parse_trees, parse_lists):
-
-			id2idx = {token['id']:i for i, token in enumerate(tokenlist)}
-			idx2id = {y:x for x, y in id2idx.items()}
-
 			for node in tokenlist:
 				node["ms feats"] = {}
+
+			# filter out useless nodes
+			filtered_tokenlist = tokenlist.filter(id=lambda x: isinstance(x, int)).filter(deprel=lambda x: x != "punct")
+			tree = filtered_tokenlist.to_tree()
+
+			id2idx = {token['id']:i for i, token in enumerate(filtered_tokenlist)}
+			idx2id = {y:x for x, y in id2idx.items()}
 
 			heads = utils.span(tree)
 			heads_dict = {}
@@ -39,7 +41,9 @@ if __name__ == '__main__':
 
 			for head, children in heads_dict.items():
 				head_tok = tokenlist[id2idx[head]]
-				children_tok = [tokenlist[id2idx[child]] for child in children]
+				children_toks = [filtered_tokenlist[id2idx[child]] for child in children]
+
+				pipeline.process(head_tok, children_toks)
 
 				# TODO: here do stuff to update tree
 
