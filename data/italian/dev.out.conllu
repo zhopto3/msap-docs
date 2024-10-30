@@ -1,230 +1,230 @@
 # sent_id = 7_WIKIShake-267
 # text = Negli anni 50, un'ondata di nuovi approcci critici rimpiazzò il modernismo e spianò la strada agli studi "post-moderni" su Shakespeare.
 1-2	Negli	_	_	_	_	_	_	_	_	
-1	In	in	ADP	E	_	3	case	3:case	_	
-2	gli	il	DET	RD	Definite=Def|Gender=Masc|Number=Plur|PronType=Art	3	det	3:det	_	Definite=Def|Gender=Masc|Number=Plur|PronType=Art
-3	anni	anno	NOUN	S	Gender=Masc|Number=Plur	12	obl	12:obl:in	_	Gender=Masc|Number=Plur
-4	50	50	NUM	N	NumType=Card	3	nummod	3:nummod	SpaceAfter=No	NumType=Card
-5	,	,	PUNCT	FF	_	3	punct	3:punct	_	
-6	un'	uno	DET	RI	Definite=Ind|Gender=Fem|Number=Sing|PronType=Art	7	det	7:det	SpaceAfter=No	Definite=Ind|Gender=Fem|Number=Sing|PronType=Art
-7	ondata	ondata	NOUN	S	Gender=Fem|Number=Sing	12	nsubj	12:nsubj|16:nsubj	_	Gender=Fem|Number=Sing
-8	di	di	ADP	E	_	10	case	10:case	_	
-9	nuovi	nuovo	ADJ	A	Gender=Masc|Number=Plur	10	amod	10:amod	_	Gender=Masc|Number=Plur
-10	approcci	approccio	NOUN	S	Gender=Masc|Number=Plur	7	nmod	7:nmod:di	_	Gender=Masc|Number=Plur
-11	critici	critico	ADJ	A	Gender=Masc|Number=Plur	10	amod	10:amod	_	Gender=Masc|Number=Plur
-12	rimpiazzò	rimpiazzare	VERB	V	Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin	0	root	0:root	_	Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin
-13	il	il	DET	RD	Definite=Def|Gender=Masc|Number=Sing|PronType=Art	14	det	14:det	_	Definite=Def|Gender=Masc|Number=Sing|PronType=Art
-14	modernismo	modernismo	NOUN	S	Gender=Masc|Number=Sing	12	obj	12:obj	_	Gender=Masc|Number=Sing
-15	e	e	CCONJ	CC	_	16	cc	16:cc	_	
-16	spianò	spianare	VERB	V	Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin	12	conj	12:conj:e	_	Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin
-17	la	il	DET	RD	Definite=Def|Gender=Fem|Number=Sing|PronType=Art	18	det	18:det	_	Definite=Def|Gender=Fem|Number=Sing|PronType=Art
-18	strada	strada	NOUN	S	Gender=Fem|Number=Sing	16	obj	16:obj	_	Gender=Fem|Number=Sing
-19-20	agli	_	_	_	_	_	_	_	_	
-19	a	a	ADP	E	_	21	case	21:case	_	
-20	gli	il	DET	RD	Definite=Def|Gender=Masc|Number=Plur|PronType=Art	21	det	21:det	_	Definite=Def|Gender=Masc|Number=Plur|PronType=Art
-21	studi	studio	NOUN	S	Gender=Masc|Number=Plur	16	obl	16:obl:a	_	Gender=Masc|Number=Plur
-22	"	"	PUNCT	FB	_	25	punct	25:punct	SpaceAfter=No	
-23	post	post	ADJ	A	_	25	amod	25:amod	SpaceAfter=No	
+1	In	in	ADP	E	_	3	case	3:case	_	HEAD=2
+2	gli	il	DET	RD	Definite=Def|Gender=Masc|Number=Plur|PronType=Art	3	det	3:det	_	Definite=Def|Gender=Masc|HEAD=2|Number=Plur|PronType=Art
+3	anni	anno	NOUN	S	Gender=Masc|Number=Plur	12	obl	12:obl:in	_	Gender=Masc|HEAD=10|Number=Plur
+4	50	50	NUM	N	NumType=Card	3	nummod	3:nummod	SpaceAfter=No	HEAD=2|NumType=Card
+5	,	,	PUNCT	FF	_	3	punct	3:punct	_	HEAD=5
+6	un'	uno	DET	RI	Definite=Ind|Gender=Fem|Number=Sing|PronType=Art	7	det	7:det	SpaceAfter=No	Definite=Ind|Gender=Fem|HEAD=5|Number=Sing|PronType=Art
+7	ondata	ondata	NOUN	S	Gender=Fem|Number=Sing	12	nsubj	12:nsubj|16:nsubj	_	Gender=Fem|HEAD=10|Number=Sing
+8	di	di	ADP	E	_	10	case	10:case	_	HEAD=8
+9	nuovi	nuovo	ADJ	A	Gender=Masc|Number=Plur	10	amod	10:amod	_	Gender=Masc|HEAD=8|Number=Plur
+10	approcci	approccio	NOUN	S	Gender=Masc|Number=Plur	7	nmod	7:nmod:di	_	Gender=Masc|HEAD=5|Number=Plur
+11	critici	critico	ADJ	A	Gender=Masc|Number=Plur	10	amod	10:amod	_	Gender=Masc|HEAD=8|Number=Plur
+12	rimpiazzò	rimpiazzare	VERB	V	Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin	0	root	0:root	_	HEAD=12|Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin
+13	il	il	DET	RD	Definite=Def|Gender=Masc|Number=Sing|PronType=Art	14	det	14:det	_	Definite=Def|Gender=Masc|HEAD=12|Number=Sing|PronType=Art
+14	modernismo	modernismo	NOUN	S	Gender=Masc|Number=Sing	12	obj	12:obj	_	Gender=Masc|HEAD=14|Number=Sing
+15	e	e	CCONJ	CC	_	16	cc	16:cc	_	HEAD=14
+16	spianò	spianare	VERB	V	Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin	12	conj	12:conj:e	_	HEAD=16|Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin
+17	la	il	DET	RD	Definite=Def|Gender=Fem|Number=Sing|PronType=Art	18	det	18:det	_	Definite=Def|Gender=Fem|HEAD=16|Number=Sing|PronType=Art
+18	strada	strada	NOUN	S	Gender=Fem|Number=Sing	16	obj	16:obj	_	Gender=Fem|HEAD=14|Number=Sing
+19-20	agli	_	_	_	_	_	_	_	_	HEAD=(19, '-', 20)
+19	a	a	ADP	E	_	21	case	21:case	_	HEAD=(19, '-', 20)
+20	gli	il	DET	RD	Definite=Def|Gender=Masc|Number=Plur|PronType=Art	21	det	21:det	_	Definite=Def|Gender=Masc|HEAD=20|Number=Plur|PronType=Art
+21	studi	studio	NOUN	S	Gender=Masc|Number=Plur	16	obl	16:obl:a	_	Gender=Masc|HEAD=14|Number=Plur
+22	"	"	PUNCT	FB	_	25	punct	25:punct	SpaceAfter=No	HEAD=22
+23	post	post	ADJ	A	_	25	amod	25:amod	SpaceAfter=No	HEAD=20
 24	-	-	PUNCT	FF	_	23	punct	23:punct	SpaceAfter=No	
-25	moderni	moderno	ADJ	A	Gender=Masc|Number=Plur	21	amod	21:amod	SpaceAfter=No	Gender=Masc|Number=Plur
+25	moderni	moderno	ADJ	A	Gender=Masc|Number=Plur	21	amod	21:amod	SpaceAfter=No	Gender=Masc|HEAD=(19, '-', 20)|Number=Plur
 26	"	"	PUNCT	FB	_	25	punct	25:punct	_	
-27	su	su	ADP	E	_	28	case	28:case	_	
-28	Shakespeare	Shakespeare	PROPN	SP	_	21	nmod	21:nmod:su	SpaceAfter=No	
+27	su	su	ADP	E	_	28	case	28:case	_	HEAD=22
+28	Shakespeare	Shakespeare	PROPN	SP	_	21	nmod	21:nmod:su	SpaceAfter=No	HEAD=(19, '-', 20)
 29	.	.	PUNCT	FS	_	12	punct	12:punct	_	
 
 
 # sent_id = quest-1137
 # text = Chi era la voce solista dei Commodores?
-1	Chi	chi	PRON	PQ	PronType=Int	0	root	0:root	_	PronType=Int
-2	era	essere	AUX	VA	Mood=Ind|Number=Sing|Person=3|Tense=Imp|VerbForm=Fin	1	cop	1:cop	_	Mood=Ind|Number=Sing|Person=3|Tense=Imp|VerbForm=Fin
-3	la	il	DET	RD	Definite=Def|Gender=Fem|Number=Sing|PronType=Art	4	det	4:det	_	Definite=Def|Gender=Fem|Number=Sing|PronType=Art
-4	voce	voce	NOUN	S	Gender=Fem|Number=Sing	1	nsubj	1:nsubj	_	Gender=Fem|Number=Sing
-5	solista	solista	ADJ	A	Number=Sing	4	amod	4:amod	_	Number=Sing
+1	Chi	chi	PRON	PQ	PronType=Int	0	root	0:root	_	HEAD=1|PronType=Int
+2	era	essere	AUX	VA	Mood=Ind|Number=Sing|Person=3|Tense=Imp|VerbForm=Fin	1	cop	1:cop	_	HEAD=1|Mood=Ind|Number=Sing|Person=3|Tense=Imp|VerbForm=Fin
+3	la	il	DET	RD	Definite=Def|Gender=Fem|Number=Sing|PronType=Art	4	det	4:det	_	Definite=Def|Gender=Fem|HEAD=4|Number=Sing|PronType=Art
+4	voce	voce	NOUN	S	Gender=Fem|Number=Sing	1	nsubj	1:nsubj	_	Gender=Fem|HEAD=4|Number=Sing
+5	solista	solista	ADJ	A	Number=Sing	4	amod	4:amod	_	HEAD=4|Number=Sing
 6-7	dei	_	_	_	_	_	_	_	_	
-6	di	di	ADP	E	_	8	case	8:case	_	
-7	i	il	DET	RD	Definite=Def|Gender=Masc|Number=Plur|PronType=Art	8	det	8:det	_	Definite=Def|Gender=Masc|Number=Plur|PronType=Art
-8	Commodores	Commodores	PROPN	SP	_	4	nmod	4:nmod:di	SpaceAfter=No	
+6	di	di	ADP	E	_	8	case	8:case	_	HEAD=7
+7	i	il	DET	RD	Definite=Def|Gender=Masc|Number=Plur|PronType=Art	8	det	8:det	_	Definite=Def|Gender=Masc|HEAD=7|Number=Plur|PronType=Art
+8	Commodores	Commodores	PROPN	SP	_	4	nmod	4:nmod:di	SpaceAfter=No	HEAD=4
 9	?	?	PUNCT	FS	_	1	punct	1:punct	_	
 
 
 # sent_id = quest-441
 # text = Che cos'è il CERN?
-1	Che	che	DET	DQ	PronType=Int	2	det	2:det	_	PronType=Int
-2	cos'	cos'	PRON	PQ	Number=Sing|PronType=Int	0	root	0:root	SpaceAfter=No	Number=Sing|PronType=Int
-3	è	essere	AUX	VA	Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin	2	cop	2:cop	_	Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin
-4	il	il	DET	RD	Definite=Def|Gender=Masc|Number=Sing|PronType=Art	5	det	5:det	_	Definite=Def|Gender=Masc|Number=Sing|PronType=Art
-5	CERN	Cern	PROPN	SP	_	2	nsubj	2:nsubj	SpaceAfter=No	
+1	Che	che	DET	DQ	PronType=Int	2	det	2:det	_	HEAD=2|PronType=Int
+2	cos'	cos'	PRON	PQ	Number=Sing|PronType=Int	0	root	0:root	SpaceAfter=No	HEAD=2|Number=Sing|PronType=Int
+3	è	essere	AUX	VA	Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin	2	cop	2:cop	_	HEAD=2|Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin
+4	il	il	DET	RD	Definite=Def|Gender=Masc|Number=Sing|PronType=Art	5	det	5:det	_	Definite=Def|Gender=Masc|HEAD=5|Number=Sing|PronType=Art
+5	CERN	Cern	PROPN	SP	_	2	nsubj	2:nsubj	SpaceAfter=No	HEAD=5
 6	?	?	PUNCT	FS	_	2	punct	2:punct	_	
 
 
 # sent_id = isst_tanl-1576
 # text = il filmetto che va al Filmstudio, piace ai compagni, viene visto da Moravia che ne scrive sull'"Espresso", eccetera.
-1	il	il	DET	RD	Definite=Def|Gender=Masc|Number=Sing|PronType=Art	2	det	2:det	_	Definite=Def|Gender=Masc|Number=Sing|PronType=Art
-2	filmetto	filmetto	NOUN	S	Gender=Masc|Number=Sing	9	nsubj	4:nsubj|9:nsubj|15:nsubj:pass	_	Gender=Masc|Number=Sing
-3	che	che	PRON	PR	PronType=Rel	4	nsubj	2:ref	_	PronType=Rel
-4	va	andare	VERB	V	Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin	2	acl:relcl	2:acl:relcl	_	Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin
+1	il	il	DET	RD	Definite=Def|Gender=Masc|Number=Sing|PronType=Art	2	det	2:det	_	Definite=Def|Gender=Masc|HEAD=2|Number=Sing|PronType=Art
+2	filmetto	filmetto	NOUN	S	Gender=Masc|Number=Sing	9	nsubj	4:nsubj|9:nsubj|15:nsubj:pass	_	Gender=Masc|HEAD=2|Number=Sing
+3	che	che	PRON	PR	PronType=Rel	4	nsubj	2:ref	_	HEAD=4|PronType=Rel
+4	va	andare	VERB	V	Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin	2	acl:relcl	2:acl:relcl	_	HEAD=4|Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin
 5-6	al	_	_	_	_	_	_	_	_	
-5	a	a	ADP	E	_	7	case	7:case	_	
-6	il	il	DET	RD	Definite=Def|Gender=Masc|Number=Sing|PronType=Art	7	det	7:det	_	Definite=Def|Gender=Masc|Number=Sing|PronType=Art
-7	Filmstudio	Filmstudio	PROPN	SP	_	4	obl	4:obl:a	SpaceAfter=No	
+5	a	a	ADP	E	_	7	case	7:case	_	HEAD=6
+6	il	il	DET	RD	Definite=Def|Gender=Masc|Number=Sing|PronType=Art	7	det	7:det	_	Definite=Def|Gender=Masc|HEAD=6|Number=Sing|PronType=Art
+7	Filmstudio	Filmstudio	PROPN	SP	_	4	obl	4:obl:a	SpaceAfter=No	HEAD=4
 8	,	,	PUNCT	FF	_	2	punct	2:punct	_	
 9	piace	piacere	VERB	V	Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin	0	root	0:root	_	Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin
-10-11	ai	_	_	_	_	_	_	_	_	
-10	a	a	ADP	E	_	12	case	12:case	_	
-11	i	il	DET	RD	Definite=Def|Gender=Masc|Number=Plur|PronType=Art	12	det	12:det	_	Definite=Def|Gender=Masc|Number=Plur|PronType=Art
-12	compagni	compagno	NOUN	S	Gender=Masc|Number=Plur	9	obl	9:obl:a	SpaceAfter=No	Gender=Masc|Number=Plur
-13	,	,	PUNCT	FF	_	15	punct	15:punct	_	
-14	viene	venire	AUX	VA	Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin	15	aux:pass	15:aux:pass	_	Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin
-15	visto	vedere	VERB	V	Gender=Masc|Number=Sing|Tense=Past|VerbForm=Part	9	conj	9:conj	_	Gender=Masc|Number=Sing|Tense=Past|VerbForm=Part
-16	da	da	ADP	E	_	17	case	17:case	_	
-17	Moravia	Moravia	PROPN	SP	_	15	obl:agent	15:obl:agent:da|20:nsubj	_	
-18	che	che	PRON	PR	PronType=Rel	20	nsubj	17:ref	_	PronType=Rel
-19	ne	ne	PRON	PC	Clitic=Yes|PronType=Prs	20	iobj	20:iobj	_	Clitic=Yes|PronType=Prs
-20	scrive	scrivere	VERB	V	Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin	17	acl:relcl	17:acl:relcl	_	Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin
+10-11	ai	_	_	_	_	_	_	_	_	HEAD=(10, '-', 11)
+10	a	a	ADP	E	_	12	case	12:case	_	HEAD=(10, '-', 11)
+11	i	il	DET	RD	Definite=Def|Gender=Masc|Number=Plur|PronType=Art	12	det	12:det	_	Definite=Def|Gender=Masc|HEAD=11|Number=Plur|PronType=Art
+12	compagni	compagno	NOUN	S	Gender=Masc|Number=Plur	9	obl	9:obl:a	SpaceAfter=No	Gender=Masc|HEAD=7|Number=Plur
+13	,	,	PUNCT	FF	_	15	punct	15:punct	_	HEAD=13
+14	viene	venire	AUX	VA	Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin	15	aux:pass	15:aux:pass	_	HEAD=11|Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin
+15	visto	vedere	VERB	V	Gender=Masc|Number=Sing|Tense=Past|VerbForm=Part	9	conj	9:conj	_	Gender=Masc|HEAD=7|Number=Sing|Tense=Past|VerbForm=Part
+16	da	da	ADP	E	_	17	case	17:case	_	HEAD=16
+17	Moravia	Moravia	PROPN	SP	_	15	obl:agent	15:obl:agent:da|20:nsubj	_	HEAD=11
+18	che	che	PRON	PR	PronType=Rel	20	nsubj	17:ref	_	HEAD=16|PronType=Rel
+19	ne	ne	PRON	PC	Clitic=Yes|PronType=Prs	20	iobj	20:iobj	_	Clitic=Yes|HEAD=19|PronType=Prs
+20	scrive	scrivere	VERB	V	Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin	17	acl:relcl	17:acl:relcl	_	HEAD=13|Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin
 21-22	sull'	_	_	_	_	_	_	_	SpaceAfter=No	
-21	su	su	ADP	E	_	24	case	24:case	_	
-22	l'	il	DET	RD	Definite=Def|Number=Sing|PronType=Art	24	det	24:det	_	Definite=Def|Number=Sing|PronType=Art
+21	su	su	ADP	E	_	24	case	24:case	_	HEAD=19
+22	l'	il	DET	RD	Definite=Def|Number=Sing|PronType=Art	24	det	24:det	_	Definite=Def|HEAD=19|Number=Sing|PronType=Art
 23	"	"	PUNCT	FB	_	24	punct	24:punct	SpaceAfter=No	
-24	Espresso	Espresso	PROPN	SP	_	20	obl	20:obl:su	SpaceAfter=No	
+24	Espresso	Espresso	PROPN	SP	_	20	obl	20:obl:su	SpaceAfter=No	HEAD=16
 25	"	"	PUNCT	FB	_	24	punct	24:punct	SpaceAfter=No	
 26	,	,	PUNCT	FF	_	9	punct	9:punct	_	
-27	eccetera	eccetera	ADV	B	_	9	advmod	9:advmod	SpaceAfter=No	
+27	eccetera	eccetera	ADV	B	_	9	advmod	9:advmod	SpaceAfter=No	HEAD=7
 28	.	.	PUNCT	FS	_	9	punct	9:punct	_	
 
 
 # sent_id = tut-2738
 # text = La truffa riguardava i finanziamenti erogati per il ritiro dal mercato delle produzioni eccedenti nel settore agricolo.
-1	La	il	DET	RD	Definite=Def|Gender=Fem|Number=Sing|PronType=Art	2	det	2:det	_	Definite=Def|Gender=Fem|Number=Sing|PronType=Art
-2	truffa	truffa	NOUN	S	Gender=Fem|Number=Sing	3	nsubj	3:nsubj	_	Gender=Fem|Number=Sing
-3	riguardava	riguardare	VERB	V	Mood=Ind|Number=Sing|Person=3|Tense=Imp|VerbForm=Fin	0	root	0:root	_	Mood=Ind|Number=Sing|Person=3|Tense=Imp|VerbForm=Fin
-4	i	il	DET	RD	Definite=Def|Gender=Masc|Number=Plur|PronType=Art	5	det	5:det	_	Definite=Def|Gender=Masc|Number=Plur|PronType=Art
-5	finanziamenti	finanziamento	NOUN	S	Gender=Masc|Number=Plur	3	obj	3:obj	_	Gender=Masc|Number=Plur
-6	erogati	erogare	VERB	V	Gender=Masc|Number=Plur|Tense=Past|VerbForm=Part	5	acl	5:acl	_	Gender=Masc|Number=Plur|Tense=Past|VerbForm=Part
-7	per	per	ADP	E	_	9	case	9:case	_	
-8	il	il	DET	RD	Definite=Def|Gender=Masc|Number=Sing|PronType=Art	9	det	9:det	_	Definite=Def|Gender=Masc|Number=Sing|PronType=Art
-9	ritiro	ritiro	NOUN	S	Gender=Masc|Number=Sing	6	obl	6:obl:per	_	Gender=Masc|Number=Sing
+1	La	il	DET	RD	Definite=Def|Gender=Fem|Number=Sing|PronType=Art	2	det	2:det	_	Definite=Def|Gender=Fem|HEAD=2|Number=Sing|PronType=Art
+2	truffa	truffa	NOUN	S	Gender=Fem|Number=Sing	3	nsubj	3:nsubj	_	Gender=Fem|HEAD=2|Number=Sing
+3	riguardava	riguardare	VERB	V	Mood=Ind|Number=Sing|Person=3|Tense=Imp|VerbForm=Fin	0	root	0:root	_	HEAD=3|Mood=Ind|Number=Sing|Person=3|Tense=Imp|VerbForm=Fin
+4	i	il	DET	RD	Definite=Def|Gender=Masc|Number=Plur|PronType=Art	5	det	5:det	_	Definite=Def|Gender=Masc|HEAD=5|Number=Plur|PronType=Art
+5	finanziamenti	finanziamento	NOUN	S	Gender=Masc|Number=Plur	3	obj	3:obj	_	Gender=Masc|HEAD=5|Number=Plur
+6	erogati	erogare	VERB	V	Gender=Masc|Number=Plur|Tense=Past|VerbForm=Part	5	acl	5:acl	_	Gender=Masc|HEAD=6|Number=Plur|Tense=Past|VerbForm=Part
+7	per	per	ADP	E	_	9	case	9:case	_	HEAD=9
+8	il	il	DET	RD	Definite=Def|Gender=Masc|Number=Sing|PronType=Art	9	det	9:det	_	Definite=Def|Gender=Masc|HEAD=9|Number=Sing|PronType=Art
+9	ritiro	ritiro	NOUN	S	Gender=Masc|Number=Sing	6	obl	6:obl:per	_	Gender=Masc|HEAD=9|Number=Sing
 10-11	dal	_	_	_	_	_	_	_	_	
-10	da	da	ADP	E	_	12	case	12:case	_	
-11	il	il	DET	RD	Definite=Def|Gender=Masc|Number=Sing|PronType=Art	12	det	12:det	_	Definite=Def|Gender=Masc|Number=Sing|PronType=Art
-12	mercato	mercato	NOUN	S	Gender=Masc|Number=Sing	9	nmod	9:nmod:da	_	Gender=Masc|Number=Sing
+10	da	da	ADP	E	_	12	case	12:case	_	HEAD=11
+11	il	il	DET	RD	Definite=Def|Gender=Masc|Number=Sing|PronType=Art	12	det	12:det	_	Definite=Def|Gender=Masc|HEAD=11|Number=Sing|PronType=Art
+12	mercato	mercato	NOUN	S	Gender=Masc|Number=Sing	9	nmod	9:nmod:da	_	Gender=Masc|HEAD=9|Number=Sing
 13-14	delle	_	_	_	_	_	_	_	_	
-13	di	di	ADP	E	_	15	case	15:case	_	
-14	le	il	DET	RD	Definite=Def|Gender=Fem|Number=Plur|PronType=Art	15	det	15:det	_	Definite=Def|Gender=Fem|Number=Plur|PronType=Art
-15	produzioni	produzione	NOUN	S	Gender=Fem|Number=Plur	9	nmod	9:nmod:di	_	Gender=Fem|Number=Plur
-16	eccedenti	eccedente	ADJ	A	Number=Plur	15	amod	15:amod	_	Number=Plur
-17-18	nel	_	_	_	_	_	_	_	_	
-17	in	in	ADP	E	_	19	case	19:case	_	
-18	il	il	DET	RD	Definite=Def|Gender=Masc|Number=Sing|PronType=Art	19	det	19:det	_	Definite=Def|Gender=Masc|Number=Sing|PronType=Art
-19	settore	settore	NOUN	S	Gender=Masc|Number=Sing	15	nmod	15:nmod:in	_	Gender=Masc|Number=Sing
-20	agricolo	agricolo	ADJ	A	Gender=Masc|Number=Sing	19	amod	19:amod	SpaceAfter=No	Gender=Masc|Number=Sing
+13	di	di	ADP	E	_	15	case	15:case	_	HEAD=13
+14	le	il	DET	RD	Definite=Def|Gender=Fem|Number=Plur|PronType=Art	15	det	15:det	_	Definite=Def|Gender=Fem|HEAD=13|Number=Plur|PronType=Art
+15	produzioni	produzione	NOUN	S	Gender=Fem|Number=Plur	9	nmod	9:nmod:di	_	Gender=Fem|HEAD=9|Number=Plur
+16	eccedenti	eccedente	ADJ	A	Number=Plur	15	amod	15:amod	_	HEAD=13|Number=Plur
+17-18	nel	_	_	_	_	_	_	_	_	HEAD=(17, '-', 18)
+17	in	in	ADP	E	_	19	case	19:case	_	HEAD=(17, '-', 18)
+18	il	il	DET	RD	Definite=Def|Gender=Masc|Number=Sing|PronType=Art	19	det	19:det	_	Definite=Def|Gender=Masc|HEAD=(17, '-', 18)|Number=Sing|PronType=Art
+19	settore	settore	NOUN	S	Gender=Masc|Number=Sing	15	nmod	15:nmod:in	_	Gender=Masc|HEAD=13|Number=Sing
+20	agricolo	agricolo	ADJ	A	Gender=Masc|Number=Sing	19	amod	19:amod	SpaceAfter=No	Gender=Masc|HEAD=(17, '-', 18)|Number=Sing
 21	.	.	PUNCT	FS	_	3	punct	3:punct	_	
 
 
 # sent_id = 10_new-56
 # text = È stata scattata negli anni '50 in Arabia Saudita.
-1	È	essere	AUX	VA	Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin	3	aux:pass	3:aux:pass	_	Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin
-2	stata	essere	AUX	VA	Gender=Fem|Number=Sing|Tense=Past|VerbForm=Part	3	aux:pass	3:aux:pass	_	Gender=Fem|Number=Sing|Tense=Past|VerbForm=Part
-3	scattata	scattare	VERB	V	Gender=Fem|Number=Sing|Tense=Past|VerbForm=Part	0	root	0:root	_	Gender=Fem|Number=Sing|Tense=Past|VerbForm=Part
+1	È	essere	AUX	VA	Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin	3	aux:pass	3:aux:pass	_	HEAD=3|Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin
+2	stata	essere	AUX	VA	Gender=Fem|Number=Sing|Tense=Past|VerbForm=Part	3	aux:pass	3:aux:pass	_	Gender=Fem|HEAD=3|Number=Sing|Tense=Past|VerbForm=Part
+3	scattata	scattare	VERB	V	Gender=Fem|Number=Sing|Tense=Past|VerbForm=Part	0	root	0:root	_	Gender=Fem|HEAD=3|Number=Sing|Tense=Past|VerbForm=Part
 4-5	negli	_	_	_	_	_	_	_	_	
-4	in	in	ADP	E	_	6	case	6:case	_	
-5	gli	il	DET	RD	Definite=Def|Gender=Masc|Number=Plur|PronType=Art	6	det	6:det	_	Definite=Def|Gender=Masc|Number=Plur|PronType=Art
-6	anni	anno	NOUN	S	Gender=Masc|Number=Plur	3	obl	3:obl:in	_	Gender=Masc|Number=Plur
-7	'50	'50	NUM	N	NumType=Card	6	nummod	6:nummod	_	NumType=Card
-8	in	in	ADP	E	_	9	case	9:case	_	
-9	Arabia	Arabia	PROPN	SP	_	3	obl	3:obl:in	_	
-10	Saudita	Saudita	PROPN	SP	_	9	flat:name	9:flat:name	SpaceAfter=No	
+4	in	in	ADP	E	_	6	case	6:case	_	HEAD=5
+5	gli	il	DET	RD	Definite=Def|Gender=Masc|Number=Plur|PronType=Art	6	det	6:det	_	Definite=Def|Gender=Masc|HEAD=5|Number=Plur|PronType=Art
+6	anni	anno	NOUN	S	Gender=Masc|Number=Plur	3	obl	3:obl:in	_	Gender=Masc|HEAD=3|Number=Plur
+7	'50	'50	NUM	N	NumType=Card	6	nummod	6:nummod	_	HEAD=5|NumType=Card
+8	in	in	ADP	E	_	9	case	9:case	_	HEAD=8
+9	Arabia	Arabia	PROPN	SP	_	3	obl	3:obl:in	_	HEAD=3
+10	Saudita	Saudita	PROPN	SP	_	9	flat:name	9:flat:name	SpaceAfter=No	HEAD=8
 11	.	.	PUNCT	FS	_	3	punct	3:punct	_	
 
 
 # sent_id = 9_PS-356
 # text = Le donne che hanno un'istruzione secondaria o terziaria entrano e restano nel mercato del lavoro più facilmente delle loro colleghe meno istruite.
-1	Le	il	DET	RD	Definite=Def|Gender=Fem|Number=Plur|PronType=Art	2	det	2:det	_	Definite=Def|Gender=Fem|Number=Plur|PronType=Art
-2	donne	donna	NOUN	S	Gender=Fem|Number=Plur	10	nsubj	4:nsubj|10:nsubj|12:nsubj	_	Gender=Fem|Number=Plur
-3	che	che	PRON	PR	PronType=Rel	4	nsubj	2:ref	_	PronType=Rel
-4	hanno	avere	VERB	V	Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin	2	acl:relcl	2:acl:relcl	_	Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin
-5	un'	uno	DET	RI	Definite=Ind|Gender=Fem|Number=Sing|PronType=Art	6	det	6:det	SpaceAfter=No	Definite=Ind|Gender=Fem|Number=Sing|PronType=Art
-6	istruzione	istruzione	NOUN	S	Gender=Fem|Number=Sing	4	obj	4:obj	_	Gender=Fem|Number=Sing
-7	secondaria	secondario	ADJ	A	Gender=Fem|Number=Sing	6	amod	6:amod	_	Gender=Fem|Number=Sing
-8	o	o	CCONJ	CC	_	9	cc	9:cc	_	
-9	terziaria	terziario	ADJ	A	Gender=Fem|Number=Sing	7	conj	6:amod|7:conj:o	_	Gender=Fem|Number=Sing
-10	entrano	entrare	VERB	V	Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin	0	root	0:root	_	Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin
-11	e	e	CCONJ	CC	_	12	cc	12:cc	_	
-12	restano	restare	VERB	V	Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin	10	conj	10:conj:e	_	Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin
+1	Le	il	DET	RD	Definite=Def|Gender=Fem|Number=Plur|PronType=Art	2	det	2:det	_	Definite=Def|Gender=Fem|HEAD=2|Number=Plur|PronType=Art
+2	donne	donna	NOUN	S	Gender=Fem|Number=Plur	10	nsubj	4:nsubj|10:nsubj|12:nsubj	_	Gender=Fem|HEAD=2|Number=Plur
+3	che	che	PRON	PR	PronType=Rel	4	nsubj	2:ref	_	HEAD=4|PronType=Rel
+4	hanno	avere	VERB	V	Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin	2	acl:relcl	2:acl:relcl	_	HEAD=4|Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin
+5	un'	uno	DET	RI	Definite=Ind|Gender=Fem|Number=Sing|PronType=Art	6	det	6:det	SpaceAfter=No	Definite=Ind|Gender=Fem|HEAD=6|Number=Sing|PronType=Art
+6	istruzione	istruzione	NOUN	S	Gender=Fem|Number=Sing	4	obj	4:obj	_	Gender=Fem|HEAD=6|Number=Sing
+7	secondaria	secondario	ADJ	A	Gender=Fem|Number=Sing	6	amod	6:amod	_	Gender=Fem|HEAD=7|Number=Sing
+8	o	o	CCONJ	CC	_	9	cc	9:cc	_	HEAD=9
+9	terziaria	terziario	ADJ	A	Gender=Fem|Number=Sing	7	conj	6:amod|7:conj:o	_	Gender=Fem|HEAD=9|Number=Sing
+10	entrano	entrare	VERB	V	Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin	0	root	0:root	_	HEAD=10|Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin
+11	e	e	CCONJ	CC	_	12	cc	12:cc	_	HEAD=12
+12	restano	restare	VERB	V	Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin	10	conj	10:conj:e	_	HEAD=12|Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin
 13-14	nel	_	_	_	_	_	_	_	_	
-13	in	in	ADP	E	_	15	case	15:case	_	
-14	il	il	DET	RD	Definite=Def|Gender=Masc|Number=Sing|PronType=Art	15	det	15:det	_	Definite=Def|Gender=Masc|Number=Sing|PronType=Art
-15	mercato	mercato	NOUN	S	Gender=Masc|Number=Sing	12	obl	12:obl:in	_	Gender=Masc|Number=Sing
+13	in	in	ADP	E	_	15	case	15:case	_	HEAD=14
+14	il	il	DET	RD	Definite=Def|Gender=Masc|Number=Sing|PronType=Art	15	det	15:det	_	Definite=Def|Gender=Masc|HEAD=14|Number=Sing|PronType=Art
+15	mercato	mercato	NOUN	S	Gender=Masc|Number=Sing	12	obl	12:obl:in	_	Gender=Masc|HEAD=12|Number=Sing
 16-17	del	_	_	_	_	_	_	_	_	
-16	di	di	ADP	E	_	18	case	18:case	_	
-17	il	il	DET	RD	Definite=Def|Gender=Masc|Number=Sing|PronType=Art	18	det	18:det	_	Definite=Def|Gender=Masc|Number=Sing|PronType=Art
-18	lavoro	lavoro	NOUN	S	Gender=Masc|Number=Sing	15	nmod	15:nmod:di	_	Gender=Masc|Number=Sing
-19	più	più	ADV	B	_	20	advmod	20:advmod	_	
-20	facilmente	facilmente	ADV	B	_	12	advmod	12:advmod	_	
+16	di	di	ADP	E	_	18	case	18:case	_	HEAD=16
+17	il	il	DET	RD	Definite=Def|Gender=Masc|Number=Sing|PronType=Art	18	det	18:det	_	Definite=Def|Gender=Masc|HEAD=16|Number=Sing|PronType=Art
+18	lavoro	lavoro	NOUN	S	Gender=Masc|Number=Sing	15	nmod	15:nmod:di	_	Gender=Masc|HEAD=18|Number=Sing
+19	più	più	ADV	B	_	20	advmod	20:advmod	_	HEAD=18
+20	facilmente	facilmente	ADV	B	_	12	advmod	12:advmod	_	HEAD=12
 21-22	delle	_	_	_	_	_	_	_	_	
-21	di	di	ADP	E	_	24	case	24:case	_	
-22	le	il	DET	RD	Definite=Def|Gender=Fem|Number=Plur|PronType=Art	24	det	24:det	_	Definite=Def|Gender=Fem|Number=Plur|PronType=Art
-23	loro	loro	DET	AP	Poss=Yes|PronType=Prs	24	det:poss	24:det:poss	_	Poss=Yes|PronType=Prs
-24	colleghe	collega	NOUN	S	Gender=Fem|Number=Plur	20	obl	20:obl:di	_	Gender=Fem|Number=Plur
-25	meno	meno	ADV	B	_	26	advmod	26:advmod	_	
-26	istruite	istruito	ADJ	A	Gender=Fem|Number=Plur	24	amod	24:amod	SpaceAfter=No	Gender=Fem|Number=Plur
+21	di	di	ADP	E	_	24	case	24:case	_	HEAD=21
+22	le	il	DET	RD	Definite=Def|Gender=Fem|Number=Plur|PronType=Art	24	det	24:det	_	Definite=Def|Gender=Fem|HEAD=21|Number=Plur|PronType=Art
+23	loro	loro	DET	AP	Poss=Yes|PronType=Prs	24	det:poss	24:det:poss	_	HEAD=23|Poss=Yes|PronType=Prs
+24	colleghe	collega	NOUN	S	Gender=Fem|Number=Plur	20	obl	20:obl:di	_	Gender=Fem|HEAD=18|Number=Plur
+25	meno	meno	ADV	B	_	26	advmod	26:advmod	_	HEAD=23
+26	istruite	istruito	ADJ	A	Gender=Fem|Number=Plur	24	amod	24:amod	SpaceAfter=No	Gender=Fem|HEAD=21|Number=Plur
 27	.	.	PUNCT	FS	_	10	punct	10:punct	_	
 
 
 # sent_id = tut-1225
 # text = In caso di successivo ritrovamento della cosa, si applicano le disposizioni del secondo comma dell'articolo precedente.
-1	In	in	ADP	E	_	2	case	2:case	_	
-2	caso	caso	NOUN	S	Gender=Masc|Number=Sing	11	obl	11:obl:in	_	Gender=Masc|Number=Sing
-3	di	di	ADP	E	_	5	case	5:case	_	
-4	successivo	successivo	ADJ	A	Gender=Masc|Number=Sing	5	amod	5:amod	_	Gender=Masc|Number=Sing
-5	ritrovamento	ritrovamento	NOUN	S	Gender=Masc|Number=Sing	2	nmod	2:nmod:di	_	Gender=Masc|Number=Sing
+1	In	in	ADP	E	_	2	case	2:case	_	HEAD=2
+2	caso	caso	NOUN	S	Gender=Masc|Number=Sing	11	obl	11:obl:in	_	Gender=Masc|HEAD=2|Number=Sing
+3	di	di	ADP	E	_	5	case	5:case	_	HEAD=5
+4	successivo	successivo	ADJ	A	Gender=Masc|Number=Sing	5	amod	5:amod	_	Gender=Masc|HEAD=5|Number=Sing
+5	ritrovamento	ritrovamento	NOUN	S	Gender=Masc|Number=Sing	2	nmod	2:nmod:di	_	Gender=Masc|HEAD=5|Number=Sing
 6-7	della	_	_	_	_	_	_	_	_	
-6	di	di	ADP	E	_	8	case	8:case	_	
-7	la	il	DET	RD	Definite=Def|Gender=Fem|Number=Sing|PronType=Art	8	det	8:det	_	Definite=Def|Gender=Fem|Number=Sing|PronType=Art
-8	cosa	cosa	NOUN	S	Gender=Fem|Number=Sing	5	nmod	5:nmod:di	SpaceAfter=No	Gender=Fem|Number=Sing
-9	,	,	PUNCT	FF	_	2	punct	2:punct	_	
-10	si	si	PRON	PC	Clitic=Yes|Person=3|PronType=Prs	11	expl:pass	11:expl:pass	_	Clitic=Yes|Person=3|PronType=Prs
-11	applicano	applicare	VERB	V	Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin	0	root	0:root	_	Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin
-12	le	il	DET	RD	Definite=Def|Gender=Fem|Number=Plur|PronType=Art	13	det	13:det	_	Definite=Def|Gender=Fem|Number=Plur|PronType=Art
-13	disposizioni	disposizione	NOUN	S	Gender=Fem|Number=Plur	11	nsubj:pass	11:nsubj:pass	_	Gender=Fem|Number=Plur
+6	di	di	ADP	E	_	8	case	8:case	_	HEAD=7
+7	la	il	DET	RD	Definite=Def|Gender=Fem|Number=Sing|PronType=Art	8	det	8:det	_	Definite=Def|Gender=Fem|HEAD=7|Number=Sing|PronType=Art
+8	cosa	cosa	NOUN	S	Gender=Fem|Number=Sing	5	nmod	5:nmod:di	SpaceAfter=No	Gender=Fem|HEAD=5|Number=Sing
+9	,	,	PUNCT	FF	_	2	punct	2:punct	_	HEAD=9
+10	si	si	PRON	PC	Clitic=Yes|Person=3|PronType=Prs	11	expl:pass	11:expl:pass	_	Clitic=Yes|HEAD=9|Person=3|PronType=Prs
+11	applicano	applicare	VERB	V	Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin	0	root	0:root	_	HEAD=11|Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin
+12	le	il	DET	RD	Definite=Def|Gender=Fem|Number=Plur|PronType=Art	13	det	13:det	_	Definite=Def|Gender=Fem|HEAD=11|Number=Plur|PronType=Art
+13	disposizioni	disposizione	NOUN	S	Gender=Fem|Number=Plur	11	nsubj:pass	11:nsubj:pass	_	Gender=Fem|HEAD=9|Number=Plur
 14-15	del	_	_	_	_	_	_	_	_	
-14	di	di	ADP	E	_	17	case	17:case	_	
-15	il	il	DET	RD	Definite=Def|Gender=Masc|Number=Sing|PronType=Art	17	det	17:det	_	Definite=Def|Gender=Masc|Number=Sing|PronType=Art
-16	secondo	secondo	ADJ	NO	Gender=Masc|Number=Sing|NumType=Ord	17	amod	17:amod	_	Gender=Masc|NumType=Ord|Number=Sing
-17	comma	comma	NOUN	S	Gender=Masc|Number=Sing	13	nmod	13:nmod:di	_	Gender=Masc|Number=Sing
+14	di	di	ADP	E	_	17	case	17:case	_	HEAD=14
+15	il	il	DET	RD	Definite=Def|Gender=Masc|Number=Sing|PronType=Art	17	det	17:det	_	Definite=Def|Gender=Masc|HEAD=14|Number=Sing|PronType=Art
+16	secondo	secondo	ADJ	NO	Gender=Masc|Number=Sing|NumType=Ord	17	amod	17:amod	_	Gender=Masc|HEAD=14|NumType=Ord|Number=Sing
+17	comma	comma	NOUN	S	Gender=Masc|Number=Sing	13	nmod	13:nmod:di	_	Gender=Masc|HEAD=17|Number=Sing
 18-19	dell'	_	_	_	_	_	_	_	SpaceAfter=No	
-18	di	di	ADP	E	_	20	case	20:case	_	
-19	l'	il	DET	RD	Definite=Def|Number=Sing|PronType=Art	20	det	20:det	_	Definite=Def|Number=Sing|PronType=Art
-20	articolo	articolo	NOUN	S	Gender=Masc|Number=Sing	17	nmod	17:nmod:di	_	Gender=Masc|Number=Sing
-21	precedente	precedente	ADJ	A	Number=Sing	20	amod	20:amod	SpaceAfter=No	Number=Sing
+18	di	di	ADP	E	_	20	case	20:case	_	HEAD=17
+19	l'	il	DET	RD	Definite=Def|Number=Sing|PronType=Art	20	det	20:det	_	Definite=Def|HEAD=17|Number=Sing|PronType=Art
+20	articolo	articolo	NOUN	S	Gender=Masc|Number=Sing	17	nmod	17:nmod:di	_	Gender=Masc|HEAD=14|Number=Sing
+21	precedente	precedente	ADJ	A	Number=Sing	20	amod	20:amod	SpaceAfter=No	HEAD=17|Number=Sing
 22	.	.	PUNCT	FS	_	11	punct	11:punct	_	
 
 
 # sent_id = isst_tanl-1461
 # text = "Ora il governo presenti un progetto sfidando i nemici dei collaboratori".
 1	"	"	PUNCT	FB	_	5	punct	5:punct	SpaceAfter=No	
-2	Ora	ora	ADV	B	_	5	advmod	5:advmod	_	
-3	il	il	DET	RD	Definite=Def|Gender=Masc|Number=Sing|PronType=Art	4	det	4:det	_	Definite=Def|Gender=Masc|Number=Sing|PronType=Art
-4	governo	governo	NOUN	S	Gender=Masc|Number=Sing	5	nsubj	5:nsubj	_	Gender=Masc|Number=Sing
+2	Ora	ora	ADV	B	_	5	advmod	5:advmod	_	HEAD=4
+3	il	il	DET	RD	Definite=Def|Gender=Masc|Number=Sing|PronType=Art	4	det	4:det	_	Definite=Def|Gender=Masc|HEAD=3|Number=Sing|PronType=Art
+4	governo	governo	NOUN	S	Gender=Masc|Number=Sing	5	nsubj	5:nsubj	_	Gender=Masc|HEAD=4|Number=Sing
 5	presenti	presentare	VERB	V	Mood=Sub|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin	0	root	0:root	_	Mood=Sub|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin
-6	un	uno	DET	RI	Definite=Ind|Gender=Masc|Number=Sing|PronType=Art	7	det	7:det	_	Definite=Ind|Gender=Masc|Number=Sing|PronType=Art
-7	progetto	progetto	NOUN	S	Gender=Masc|Number=Sing	5	obj	5:obj	_	Gender=Masc|Number=Sing
-8	sfidando	sfidare	VERB	V	VerbForm=Ger	5	advcl	5:advcl	_	VerbForm=Ger
-9	i	il	DET	RD	Definite=Def|Gender=Masc|Number=Plur|PronType=Art	10	det	10:det	_	Definite=Def|Gender=Masc|Number=Plur|PronType=Art
-10	nemici	nemico	NOUN	S	Gender=Masc|Number=Plur	8	obj	8:obj	_	Gender=Masc|Number=Plur
+6	un	uno	DET	RI	Definite=Ind|Gender=Masc|Number=Sing|PronType=Art	7	det	7:det	_	Definite=Ind|Gender=Masc|HEAD=6|Number=Sing|PronType=Art
+7	progetto	progetto	NOUN	S	Gender=Masc|Number=Sing	5	obj	5:obj	_	Gender=Masc|HEAD=7|Number=Sing
+8	sfidando	sfidare	VERB	V	VerbForm=Ger	5	advcl	5:advcl	_	HEAD=4|VerbForm=Ger
+9	i	il	DET	RD	Definite=Def|Gender=Masc|Number=Plur|PronType=Art	10	det	10:det	_	Definite=Def|Gender=Masc|HEAD=9|Number=Plur|PronType=Art
+10	nemici	nemico	NOUN	S	Gender=Masc|Number=Plur	8	obj	8:obj	_	Gender=Masc|HEAD=7|Number=Plur
 11-12	dei	_	_	_	_	_	_	_	_	
-11	di	di	ADP	E	_	13	case	13:case	_	
-12	i	il	DET	RD	Definite=Def|Gender=Masc|Number=Plur|PronType=Art	13	det	13:det	_	Definite=Def|Gender=Masc|Number=Plur|PronType=Art
-13	collaboratori	collaboratore	NOUN	S	Gender=Masc|Number=Plur	10	nmod	10:nmod:di	SpaceAfter=No	Gender=Masc|Number=Plur
+11	di	di	ADP	E	_	13	case	13:case	_	HEAD=11
+12	i	il	DET	RD	Definite=Def|Gender=Masc|Number=Plur|PronType=Art	13	det	13:det	_	Definite=Def|Gender=Masc|HEAD=11|Number=Plur|PronType=Art
+13	collaboratori	collaboratore	NOUN	S	Gender=Masc|Number=Plur	10	nmod	10:nmod:di	SpaceAfter=No	Gender=Masc|HEAD=9|Number=Plur
 14	"	"	PUNCT	FB	_	5	punct	5:punct	SpaceAfter=No	
 15	.	.	PUNCT	FS	_	5	punct	5:punct	_	
 
 
 # sent_id = isst_tanl-3703
 # text = Piccoli omicidi senza importanza.
-1	Piccoli	piccolo	ADJ	A	Gender=Masc|Number=Plur	2	amod	2:amod	_	Gender=Masc|Number=Plur
-2	omicidi	omicidio	NOUN	S	Gender=Masc|Number=Plur	0	root	0:root	_	Gender=Masc|Number=Plur
-3	senza	senza	ADP	E	_	4	case	4:case	_	
-4	importanza	importanza	NOUN	S	Gender=Fem|Number=Sing	2	nmod	2:nmod:senza	SpaceAfter=No	Gender=Fem|Number=Sing
+1	Piccoli	piccolo	ADJ	A	Gender=Masc|Number=Plur	2	amod	2:amod	_	Gender=Masc|HEAD=2|Number=Plur
+2	omicidi	omicidio	NOUN	S	Gender=Masc|Number=Plur	0	root	0:root	_	Gender=Masc|HEAD=2|Number=Plur
+3	senza	senza	ADP	E	_	4	case	4:case	_	HEAD=4
+4	importanza	importanza	NOUN	S	Gender=Fem|Number=Sing	2	nmod	2:nmod:senza	SpaceAfter=No	Gender=Fem|HEAD=4|Number=Sing
 5	.	.	PUNCT	FS	_	2	punct	2:punct	_	
 
 
