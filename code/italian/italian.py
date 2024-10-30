@@ -8,6 +8,7 @@ python code.italian.italian data/italian/dev.conllu data/italian/dev.out.conllu
 """
 import code.utils as utils
 import code.italian.ita_pipeline as pipeline
+import code.italian.preprocess_utils as putils
 import conllu
 
 
@@ -24,16 +25,34 @@ if __name__ == '__main__':
 		parse_lists = list(conllu.parse_incr(f))
 
 	with open(out_path, "w", encoding="utf-8") as fout:
+
 		for tree, tokenlist in zip(parse_trees, parse_lists):
 			for node in tokenlist:
 				node["ms feats"] = {}
 
-			# filter out useless nodes
-			filtered_tokenlist = tokenlist.filter(id=lambda x: isinstance(x, int)).filter(deprel=lambda x: x != "punct")
-			tree = filtered_tokenlist.to_tree()
 
-			id2idx = {token['id']:i for i, token in enumerate(filtered_tokenlist)}
+			id2idx = {token['id']:i for i, token in enumerate(tokenlist)}
 			idx2id = {y:x for x, y in id2idx.items()}
+
+			# filter out useless nodes
+			filtered_tokenlist = tokenlist.filter(id=lambda x: isinstance(x, int)).filter(upos=lambda x: x!="PUNCT").filter(deprel=lambda x: x != "punct")
+
+			# print(tokenlist)
+			# print(filtered_tokenlist)
+
+
+			# combine fixed expressions
+			fixed_nodes = filtered_tokenlist.filter(deprel="fixed")
+			if len(fixed_nodes):
+				fixed_nodes_sorted = sorted(fixed_nodes, key=lambda x: x['id'])
+				for node in fixed_nodes_sorted:
+					# print(node)
+					node_head = tokenlist[id2idx[node['head']]]
+					node_head["lemma"] += f" {node['lemma']}"
+
+			filtered_tokenlist = filtered_tokenlist.filter(deprel=lambda x: x!= "fixed")
+
+			tree = filtered_tokenlist.to_tree()
 
 			heads = utils.span(tree)
 			heads_dict = {}
@@ -45,15 +64,17 @@ if __name__ == '__main__':
 
 			for head, children in heads_dict.items():
 				head_tok = tokenlist[id2idx[head]]
-				children_toks = [filtered_tokenlist[id2idx[child]] for child in children]
+				children_toks = [tokenlist[id2idx[child]] for child in children]
 
 				pipeline.process(head_tok, children_toks)
 
-				# TODO: here do stuff to update tree
+			# 	# TODO: here do stuff to update tree
 
 			for node in tokenlist:
-				if node.get("feats"):
+				# restore original lemma
+				node['lemma'] = node['lemma'].split(" ")[0]
 
+				if node.get("feats"):
 					node_feats = node['feats']
 					node_msfeats = node["ms feats"]
 
