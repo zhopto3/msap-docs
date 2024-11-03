@@ -52,7 +52,11 @@
 
 ### ADJs
 
+- [ ] copy all features? (`no agreement features are needed`)
+
 ### ADVs
+
+- [ ] copy all features?
 
 ## Other
 

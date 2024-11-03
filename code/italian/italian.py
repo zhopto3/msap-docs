@@ -10,22 +10,23 @@ import logging
 import collections
 import code.utils as utils
 import code.italian.ita_pipeline as pipeline
-import code.italian.preprocess_utils as putils
 import conllu
 
 
-
-logger = logging.getLogger(__name__)
-logging.basicConfig(format='[%(module)s:%(lineno)d] %(levelname)s:%(message)s',
-					filename='logs/italian/main.log',
-					filemode='w', encoding='utf-8',
-					level=logging.DEBUG)
-
 if __name__ == '__main__':
 	import sys
+	import pathlib
 
-	filepath = sys.argv[1]
-	out_path = sys.argv[2]
+	filepath = pathlib.Path(sys.argv[1])
+	out_path = pathlib.Path(sys.argv[2])
+
+
+
+	logger = logging.getLogger(__name__)
+	logging.basicConfig(format='[%(module)s:%(lineno)d] %(levelname)s:%(message)s',
+					filename=f"logs/italian/{filepath.stem}.log",
+					filemode='w', encoding='utf-8',
+					level=logging.DEBUG)
 
 	logging.info("Processing %s into %s", filepath, out_path)
 
@@ -48,9 +49,13 @@ if __name__ == '__main__':
 			id2idx = {token['id']:i for i, token in enumerate(tokenlist)}
 			idx2id = {y:x for x, y in id2idx.items()}
 
-			# filter out useless nodes
-			filtered_tokenlist = tokenlist.filter(id=lambda x: isinstance(x, int)).filter(upos=lambda x: x!="PUNCT").filter(deprel=lambda x: x != "punct")
-			logging.debug("Removed punctuation: %s", " ".join([x.__str__() for x in filtered_tokenlist]))
+			# filter out useless nodes (punct, reparandum)
+			filtered_tokenlist = tokenlist \
+								.filter(id=lambda x: isinstance(x, int)) \
+								.filter(upos=lambda x: x!="PUNCT") \
+								.filter(deprel=lambda x: x != "punct") \
+								.filter(deprel=lambda x: x != "reparandum")
+			logging.debug("Removed punctuation: %s", " ".join([str(x) for x in filtered_tokenlist]))
 
 			# combine fixed expressions
 			fixed_nodes = filtered_tokenlist.filter(deprel="fixed")
@@ -63,7 +68,7 @@ if __name__ == '__main__':
 					node_head["lemma"] += f" {node['lemma']}"
 					node_head["form"] += f" {node['form']}"
 
-				logging.debug("Removed fixed deprels: %s", " | ".join([x.__str__() for x in filtered_tokenlist]))
+				logging.debug("Removed fixed deprels: %s", " | ".join([str(x) for x in filtered_tokenlist]))
 
 
 			# TODO: split parataxis?
@@ -82,8 +87,12 @@ if __name__ == '__main__':
 				head_tok = tokenlist[id2idx[head]]
 				children_toks = [tokenlist[id2idx[child]] for child in children]
 
+				# remove parataxis
+				children_toks = [tok for tok in children_toks if tok["deprel"] != "parataxis"]
+
+
 				logging.info("Processing head (%s/%s) with children (%s)",
-				 head_tok, head_tok["upos"], " | ".join(x.__str__() for x in children_toks))
+				 head_tok, head_tok["upos"], " | ".join(str(x) for x in children_toks))
 
 				head_tok["content"] = True
 
@@ -97,7 +106,7 @@ if __name__ == '__main__':
 					pipeline.process_adv(head_tok, children_toks)
 				else:
 					logging.warning("Found head (%s) with PoS %s, children (%s)",
-					 head_tok, head_tok["upos"], " | ".join(x.__str__() for x in children_toks))
+					 head_tok, head_tok["upos"], " | ".join(str(x) for x in children_toks))
 					#TODO: NUM?
 					#TODO: PRON?
 

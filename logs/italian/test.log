@@ -1,0 +1,196 @@
+[italian:32] INFO:Processing data/italian/test.conllu into data/italian/test.out.conllu
+[italian:43] INFO:Procesisng sentence id: 10_new-111
+[italian:44] DEBUG:Procesisng sentence: Le misure non sono mantenute oltre il tempo strettamente necessario e, in ogni caso, cessano di essere applicate una volta attuato l'impegno pertinente.
+[italian:55] DEBUG:Removed punctuation: Le misure non sono mantenute oltre il tempo strettamente necessario e in ogni caso cessano di essere applicate una volta attuato l' impegno pertinente
+[italian:87] INFO:Processing head (mantenute/VERB) with children (misure | non | sono | tempo | cessano)
+[italian:87] INFO:Processing head (misure/NOUN) with children (Le)
+[italian:87] INFO:Processing head (tempo/NOUN) with children (oltre | il | necessario)
+[ita_pipeline:43] INFO:Node necessario needs new rules
+[italian:87] INFO:Processing head (cessano/VERB) with children (e | caso | applicate)
+[italian:87] INFO:Processing head (necessario/ADJ) with children (strettamente)
+[italian:87] INFO:Processing head (caso/NOUN) with children (in | ogni)
+[ita_pipeline:34] WARNING:DET ogni with features {'Number': 'Sing', 'PronType': 'Ind'}
+[italian:87] INFO:Processing head (applicate/VERB) with children (di | essere | volta)
+[italian:87] INFO:Processing head (volta/NOUN) with children (una | attuato)
+[ita_pipeline:43] INFO:Node attuato needs new rules
+[italian:87] INFO:Processing head (attuato/VERB) with children (impegno)
+[italian:87] INFO:Processing head (impegno/NOUN) with children (l' | pertinente)
+[ita_pipeline:43] INFO:Node pertinente needs new rules
+[italian:128] ERROR:Node non should be empty bus has features defaultdict(<class 'list'>, {'tmp-child': ['VERB']})
+[italian:128] ERROR:Node sono should be empty bus has features defaultdict(<class 'list'>, {'tmp-child': ['VERB']})
+[italian:128] ERROR:Node strettamente should be empty bus has features defaultdict(<class 'list'>, {'tmp-child': ['ADJ']})
+[italian:128] ERROR:Node e should be empty bus has features defaultdict(<class 'list'>, {'tmp-child': ['VERB']})
+[italian:128] ERROR:Node di should be empty bus has features defaultdict(<class 'list'>, {'tmp-child': ['VERB']})
+[italian:128] ERROR:Node essere should be empty bus has features defaultdict(<class 'list'>, {'tmp-child': ['VERB']})
+[italian:128] ERROR:Node pertinente should be empty bus has features defaultdict(<class 'list'>, {'tmp-child': ['NOUN']})
+[italian:43] INFO:Procesisng sentence id: quest-1746
+[italian:44] DEBUG:Procesisng sentence: Qual è il motto del "New York Times"?
+[italian:55] DEBUG:Removed punctuation: Qual è il motto di il New York Times
+[italian:87] INFO:Processing head (Qual/PRON) with children (è | motto)
+[italian:101] WARNING:Found head (Qual) with PoS PRON, children (è | motto)
+[italian:87] INFO:Processing head (motto/NOUN) with children (il | New)
+[ita_pipeline:43] INFO:Node New needs new rules
+[italian:87] INFO:Processing head (New/PROPN) with children (di | il | York | Times)
+[ita_pipeline:23] WARNING:Head New has no features
+[ita_pipeline:43] INFO:Node York needs new rules
+[ita_pipeline:43] INFO:Node Times needs new rules
+[italian:128] ERROR:Node York should be empty bus has features defaultdict(<class 'list'>, {'tmp-child': ['NOUN']})
+[italian:128] ERROR:Node Times should be empty bus has features defaultdict(<class 'list'>, {'tmp-child': ['NOUN']})
+[italian:43] INFO:Procesisng sentence id: quest-1244
+[italian:44] DEBUG:Procesisng sentence: In che anno venne inventato il PC?
+[italian:55] DEBUG:Removed punctuation: In che anno venne inventato il PC
+[italian:87] INFO:Processing head (inventato/VERB) with children (anno | venne | PC)
+[italian:87] INFO:Processing head (anno/NOUN) with children (In | che)
+[ita_pipeline:34] WARNING:DET che with features {'Number': 'Sing', 'PronType': 'Int'}
+[italian:87] INFO:Processing head (PC/PROPN) with children (il)
+[ita_pipeline:23] WARNING:Head PC has no features
+[italian:128] ERROR:Node venne should be empty bus has features defaultdict(<class 'list'>, {'tmp-child': ['VERB']})
+[italian:43] INFO:Procesisng sentence id: isst_tanl-1745
+[italian:44] DEBUG:Procesisng sentence: Mi provo a ripetere con la variante le frasi di poco fa:
+[italian:55] DEBUG:Removed punctuation: Mi provo a ripetere con la variante le frasi di poco fa
+[italian:87] INFO:Processing head (provo/VERB) with children (Mi | ripetere)
+[italian:87] INFO:Processing head (ripetere/VERB) with children (a | variante | frasi)
+[italian:87] INFO:Processing head (variante/NOUN) with children (con | la)
+[italian:87] INFO:Processing head (frasi/NOUN) with children (le | poco)
+[ita_pipeline:43] INFO:Node poco needs new rules
+[italian:87] INFO:Processing head (poco/ADV) with children (di | fa)
+[ita_pipeline:56] INFO:Here
+[italian:128] ERROR:Node Mi should be empty bus has features defaultdict(<class 'list'>, {'tmp-child': ['VERB']})
+[italian:128] ERROR:Node a should be empty bus has features defaultdict(<class 'list'>, {'tmp-child': ['VERB']})
+[italian:128] ERROR:Node di should be empty bus has features defaultdict(<class 'list'>, {'tmp-child': ['ADV']})
+[italian:128] ERROR:Node fa should be empty bus has features defaultdict(<class 'list'>, {'tmp-child': ['ADV']})
+[italian:43] INFO:Procesisng sentence id: tut-3582
+[italian:44] DEBUG:Procesisng sentence: Lo smog fotochimico viene anche chiamato smog estivo o smog di Los Angeles perché più comune nei climi caldi e asciutti, come accade tipicamente nella città di Los Angeles (i primi casi di smog fotochimico vennero segnalati intorno al 1940 a Los Angeles).
+[italian:55] DEBUG:Removed punctuation: Lo smog fotochimico viene anche chiamato smog estivo o smog di Los Angeles perché più comune in i climi caldi e asciutti come accade tipicamente in la città di Los Angeles i primi casi di smog fotochimico vennero segnalati intorno a il 1940 a Los Angeles
+[italian:68] DEBUG:Removed fixed deprels: Lo | smog | fotochimico | viene | anche | chiamato | smog | estivo | o | smog | di | Los | Angeles | perché | più | comune | in | i | climi | caldi | e | asciutti | come | accade | tipicamente | in | la | città | di | Los | Angeles | i | primi | casi | di | smog | fotochimico | vennero | segnalati | intorno a | il | 1940 | a | Los | Angeles
+[italian:87] INFO:Processing head (chiamato/VERB) with children (smog | viene | anche | smog | comune | segnalati)
+[italian:87] INFO:Processing head (smog/NOUN) with children (Lo | fotochimico)
+[ita_pipeline:43] INFO:Node fotochimico needs new rules
+[italian:87] INFO:Processing head (smog/NOUN) with children (estivo | smog)
+[ita_pipeline:43] INFO:Node estivo needs new rules
+[ita_pipeline:43] INFO:Node smog needs new rules
+[italian:87] INFO:Processing head (comune/ADJ) with children (perché | più | climi)
+[italian:87] INFO:Processing head (segnalati/VERB) with children (casi | vennero | 1940 | Los)
+[italian:87] INFO:Processing head (smog/NOUN) with children (o | Los)
+[ita_pipeline:43] INFO:Node o needs new rules
+[ita_pipeline:43] INFO:Node Los needs new rules
+[italian:87] INFO:Processing head (climi/NOUN) with children (in | i | caldi | accade)
+[ita_pipeline:43] INFO:Node caldi needs new rules
+[ita_pipeline:43] INFO:Node accade needs new rules
+[italian:87] INFO:Processing head (casi/NOUN) with children (i | primi | smog)
+[ita_pipeline:43] INFO:Node primi needs new rules
+[ita_pipeline:43] INFO:Node smog needs new rules
+[italian:87] INFO:Processing head (1940/NUM) with children (intorno a | il)
+[italian:101] WARNING:Found head (1940) with PoS NUM, children (intorno a | il)
+[italian:87] INFO:Processing head (Los/PROPN) with children (a | Angeles)
+[ita_pipeline:23] WARNING:Head Los has no features
+[ita_pipeline:43] INFO:Node Angeles needs new rules
+[italian:87] INFO:Processing head (Los/PROPN) with children (di | Angeles)
+[ita_pipeline:23] WARNING:Head Los has no features
+[ita_pipeline:43] INFO:Node Angeles needs new rules
+[italian:87] INFO:Processing head (caldi/ADJ) with children (asciutti)
+[italian:87] INFO:Processing head (accade/VERB) with children (come | tipicamente | città)
+[italian:87] INFO:Processing head (smog/NOUN) with children (di | fotochimico)
+[ita_pipeline:43] INFO:Node fotochimico needs new rules
+[italian:87] INFO:Processing head (asciutti/ADJ) with children (e)
+[italian:87] INFO:Processing head (città/NOUN) with children (in | la | Los)
+[ita_pipeline:43] INFO:Node Los needs new rules
+[italian:87] INFO:Processing head (Los/PROPN) with children (di | Angeles)
+[ita_pipeline:23] WARNING:Head Los has no features
+[ita_pipeline:43] INFO:Node Angeles needs new rules
+[italian:128] ERROR:Node fotochimico should be empty bus has features defaultdict(<class 'list'>, {'tmp-child': ['NOUN']})
+[italian:128] ERROR:Node viene should be empty bus has features defaultdict(<class 'list'>, {'tmp-child': ['VERB']})
+[italian:128] ERROR:Node anche should be empty bus has features defaultdict(<class 'list'>, {'tmp-child': ['VERB']})
+[italian:128] ERROR:Node estivo should be empty bus has features defaultdict(<class 'list'>, {'tmp-child': ['NOUN']})
+[italian:128] ERROR:Node o should be empty bus has features defaultdict(<class 'list'>, {'tmp-child': ['NOUN']})
+[italian:128] ERROR:Node Angeles should be empty bus has features defaultdict(<class 'list'>, {'tmp-child': ['NOUN']})
+[italian:128] ERROR:Node perché should be empty bus has features defaultdict(<class 'list'>, {'tmp-child': ['ADJ']})
+[italian:128] ERROR:Node più should be empty bus has features defaultdict(<class 'list'>, {'tmp-child': ['ADJ']})
+[italian:128] ERROR:Node e should be empty bus has features defaultdict(<class 'list'>, {'tmp-child': ['ADJ']})
+[italian:128] ERROR:Node come should be empty bus has features defaultdict(<class 'list'>, {'tmp-child': ['VERB']})
+[italian:128] ERROR:Node tipicamente should be empty bus has features defaultdict(<class 'list'>, {'tmp-child': ['VERB']})
+[italian:128] ERROR:Node Angeles should be empty bus has features defaultdict(<class 'list'>, {'tmp-child': ['NOUN']})
+[italian:128] ERROR:Node primi should be empty bus has features defaultdict(<class 'list'>, {'tmp-child': ['NOUN']})
+[italian:128] ERROR:Node fotochimico should be empty bus has features defaultdict(<class 'list'>, {'tmp-child': ['NOUN']})
+[italian:128] ERROR:Node vennero should be empty bus has features defaultdict(<class 'list'>, {'tmp-child': ['VERB']})
+[italian:128] ERROR:Node Angeles should be empty bus has features defaultdict(<class 'list'>, {'tmp-child': ['NOUN']})
+[italian:43] INFO:Procesisng sentence id: test-215
+[italian:44] DEBUG:Procesisng sentence: Certo, – ha sottolineato Bergoglio – chi è investito di autorità ha maggiore responsabilità, ma ciascuno è corresponsabile, nel bene e nel male”.
+[italian:55] DEBUG:Removed punctuation: Certo ha sottolineato Bergoglio chi è investito di autorità ha maggiore responsabilità ma ciascuno è corresponsabile in il bene e in il male
+[italian:87] INFO:Processing head (ha/VERB) with children (Certo | sottolineato | chi | responsabilità | corresponsabile)
+[italian:87] INFO:Processing head (sottolineato/VERB) with children (ha | Bergoglio)
+[italian:87] INFO:Processing head (chi/PRON) with children (investito)
+[italian:101] WARNING:Found head (chi) with PoS PRON, children (investito)
+[italian:87] INFO:Processing head (responsabilità/NOUN) with children (maggiore)
+[ita_pipeline:43] INFO:Node maggiore needs new rules
+[italian:87] INFO:Processing head (corresponsabile/ADJ) with children (ma | ciascuno | è | bene)
+[italian:87] INFO:Processing head (investito/VERB) with children (è | autorità)
+[italian:87] INFO:Processing head (bene/NOUN) with children (in | il | male)
+[ita_pipeline:43] INFO:Node male needs new rules
+[italian:87] INFO:Processing head (autorità/NOUN) with children (di)
+[italian:87] INFO:Processing head (male/NOUN) with children (e | in | il)
+[ita_pipeline:43] INFO:Node e needs new rules
+[italian:128] ERROR:Node Certo should be empty bus has features defaultdict(<class 'list'>, {'tmp-child': ['VERB']})
+[italian:128] ERROR:Node ha should be empty bus has features defaultdict(<class 'list'>, {'tmp-child': ['VERB']})
+[italian:128] ERROR:Node Bergoglio should be empty bus has features defaultdict(<class 'list'>, {'tmp-child': ['VERB']})
+[italian:128] ERROR:Node è should be empty bus has features defaultdict(<class 'list'>, {'tmp-child': ['VERB']})
+[italian:128] ERROR:Node maggiore should be empty bus has features defaultdict(<class 'list'>, {'tmp-child': ['NOUN']})
+[italian:128] ERROR:Node ma should be empty bus has features defaultdict(<class 'list'>, {'tmp-child': ['ADJ']})
+[italian:128] ERROR:Node ciascuno should be empty bus has features defaultdict(<class 'list'>, {'tmp-child': ['ADJ']})
+[italian:128] ERROR:Node è should be empty bus has features defaultdict(<class 'list'>, {'tmp-child': ['ADJ']})
+[italian:128] ERROR:Node e should be empty bus has features defaultdict(<class 'list'>, {'tmp-child': ['NOUN']})
+[italian:43] INFO:Procesisng sentence id: isst_tanl-2631
+[italian:44] DEBUG:Procesisng sentence: Cimini era uscito in mare, solo, a bordo di una piccola imbarcazione, la sera prima.
+[italian:55] DEBUG:Removed punctuation: Cimini era uscito in mare solo a bordo di una piccola imbarcazione la sera prima
+[italian:87] INFO:Processing head (uscito/VERB) with children (Cimini | era | mare | solo | bordo | sera)
+[italian:87] INFO:Processing head (mare/NOUN) with children (in)
+[italian:87] INFO:Processing head (bordo/NOUN) with children (a | imbarcazione)
+[ita_pipeline:43] INFO:Node imbarcazione needs new rules
+[italian:87] INFO:Processing head (sera/NOUN) with children (la | prima)
+[ita_pipeline:43] INFO:Node prima needs new rules
+[italian:87] INFO:Processing head (imbarcazione/NOUN) with children (di | una | piccola)
+[ita_pipeline:43] INFO:Node piccola needs new rules
+[italian:128] ERROR:Node Cimini should be empty bus has features defaultdict(<class 'list'>, {'tmp-child': ['VERB']})
+[italian:128] ERROR:Node era should be empty bus has features defaultdict(<class 'list'>, {'tmp-child': ['VERB']})
+[italian:128] ERROR:Node solo should be empty bus has features defaultdict(<class 'list'>, {'tmp-child': ['VERB']})
+[italian:128] ERROR:Node piccola should be empty bus has features defaultdict(<class 'list'>, {'tmp-child': ['NOUN']})
+[italian:128] ERROR:Node prima should be empty bus has features defaultdict(<class 'list'>, {'tmp-child': ['NOUN']})
+[italian:43] INFO:Procesisng sentence id: tut-2508
+[italian:44] DEBUG:Procesisng sentence: Vi è andata bene, se eravate inglesi o americani sapevamo noi come trattarvi.
+[italian:55] DEBUG:Removed punctuation: Vi è andata bene se eravate inglesi o americani sapevamo noi come trattar vi
+[italian:87] INFO:Processing head (andata/VERB) with children (Vi | è | bene | sapevamo)
+[italian:87] INFO:Processing head (sapevamo/VERB) with children (inglesi | noi | trattar)
+[italian:87] INFO:Processing head (inglesi/ADJ) with children (se | eravate | americani)
+[italian:87] INFO:Processing head (trattar/VERB) with children (come | vi)
+[italian:87] INFO:Processing head (americani/ADJ) with children (o)
+[italian:128] ERROR:Node Vi should be empty bus has features defaultdict(<class 'list'>, {'tmp-child': ['VERB']})
+[italian:128] ERROR:Node è should be empty bus has features defaultdict(<class 'list'>, {'tmp-child': ['VERB']})
+[italian:128] ERROR:Node bene should be empty bus has features defaultdict(<class 'list'>, {'tmp-child': ['VERB']})
+[italian:128] ERROR:Node se should be empty bus has features defaultdict(<class 'list'>, {'tmp-child': ['ADJ']})
+[italian:128] ERROR:Node eravate should be empty bus has features defaultdict(<class 'list'>, {'tmp-child': ['ADJ']})
+[italian:128] ERROR:Node o should be empty bus has features defaultdict(<class 'list'>, {'tmp-child': ['ADJ']})
+[italian:128] ERROR:Node noi should be empty bus has features defaultdict(<class 'list'>, {'tmp-child': ['VERB']})
+[italian:128] ERROR:Node come should be empty bus has features defaultdict(<class 'list'>, {'tmp-child': ['VERB']})
+[italian:128] ERROR:Node vi should be empty bus has features defaultdict(<class 'list'>, {'tmp-child': ['VERB']})
+[italian:43] INFO:Procesisng sentence id: isst_tanl-1616
+[italian:44] DEBUG:Procesisng sentence: una serata all'Elba per Mariateresa Di Lascia.
+[italian:55] DEBUG:Removed punctuation: una serata a l' Elba per Mariateresa Di Lascia
+[italian:87] INFO:Processing head (serata/NOUN) with children (una | Elba | Mariateresa)
+[ita_pipeline:43] INFO:Node Elba needs new rules
+[ita_pipeline:43] INFO:Node Mariateresa needs new rules
+[italian:87] INFO:Processing head (Elba/PROPN) with children (a | l')
+[ita_pipeline:23] WARNING:Head Elba has no features
+[italian:87] INFO:Processing head (Mariateresa/PROPN) with children (per | Di | Lascia)
+[ita_pipeline:23] WARNING:Head Mariateresa has no features
+[ita_pipeline:43] INFO:Node Di needs new rules
+[ita_pipeline:43] INFO:Node Lascia needs new rules
+[italian:128] ERROR:Node Di should be empty bus has features defaultdict(<class 'list'>, {'tmp-child': ['NOUN']})
+[italian:128] ERROR:Node Lascia should be empty bus has features defaultdict(<class 'list'>, {'tmp-child': ['NOUN']})
+[italian:43] INFO:Procesisng sentence id: tut-279
+[italian:44] DEBUG:Procesisng sentence: 892. Distanze per gli alberi.
+[italian:55] DEBUG:Removed punctuation: 892 Distanze per gli alberi
+[italian:87] INFO:Processing head (Distanze/NOUN) with children (892 | alberi)
+[ita_pipeline:43] INFO:Node 892 needs new rules
+[ita_pipeline:43] INFO:Node alberi needs new rules
+[italian:87] INFO:Processing head (alberi/NOUN) with children (per | gli)
+[italian:128] ERROR:Node 892 should be empty bus has features defaultdict(<class 'list'>, {'tmp-child': ['NOUN']})
