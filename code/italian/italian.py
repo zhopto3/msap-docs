@@ -6,17 +6,28 @@ e.g.
 
 python code.italian.italian data/italian/dev.conllu data/italian/dev.out.conllu
 """
+import logging
+import collections
 import code.utils as utils
 import code.italian.ita_pipeline as pipeline
 import code.italian.preprocess_utils as putils
 import conllu
 
 
+
+logger = logging.getLogger(__name__)
+logging.basicConfig(format='[%(module)s:%(lineno)d] %(levelname)s:%(message)s',
+					filename='logs/italian/main.log',
+					filemode='w', encoding='utf-8',
+					level=logging.DEBUG)
+
 if __name__ == '__main__':
 	import sys
 
 	filepath = sys.argv[1]
 	out_path = sys.argv[2]
+
+	logging.info("Processing %s into %s", filepath, out_path)
 
 	with open(filepath, encoding='utf8') as f:
 		parse_trees = list(conllu.parse_tree_incr(f))
@@ -27,30 +38,35 @@ if __name__ == '__main__':
 	with open(out_path, "w", encoding="utf-8") as fout:
 
 		for tree, tokenlist in zip(parse_trees, parse_lists):
-			for node in tokenlist:
-				node["ms feats"] = {}
+			logging.info("Procesisng sentence id: %s", tokenlist.metadata["sent_id"])
+			logging.debug("Procesisng sentence: %s", tokenlist.metadata["text"])
 
+			for node in tokenlist:
+				node["ms feats"] = collections.defaultdict(list)
+				node["content"] = False
 
 			id2idx = {token['id']:i for i, token in enumerate(tokenlist)}
 			idx2id = {y:x for x, y in id2idx.items()}
 
 			# filter out useless nodes
 			filtered_tokenlist = tokenlist.filter(id=lambda x: isinstance(x, int)).filter(upos=lambda x: x!="PUNCT").filter(deprel=lambda x: x != "punct")
-
-			# print(tokenlist)
-			# print(filtered_tokenlist)
-
+			logging.debug("Removed punctuation: %s", " ".join([x.__str__() for x in filtered_tokenlist]))
 
 			# combine fixed expressions
 			fixed_nodes = filtered_tokenlist.filter(deprel="fixed")
+			filtered_tokenlist = filtered_tokenlist.filter(deprel=lambda x: x!= "fixed")
+
 			if len(fixed_nodes):
 				fixed_nodes_sorted = sorted(fixed_nodes, key=lambda x: x['id'])
 				for node in fixed_nodes_sorted:
-					# print(node)
 					node_head = tokenlist[id2idx[node['head']]]
 					node_head["lemma"] += f" {node['lemma']}"
+					node_head["form"] += f" {node['form']}"
 
-			filtered_tokenlist = filtered_tokenlist.filter(deprel=lambda x: x!= "fixed")
+				logging.debug("Removed fixed deprels: %s", " | ".join([x.__str__() for x in filtered_tokenlist]))
+
+
+			# TODO: split parataxis?
 
 			tree = filtered_tokenlist.to_tree()
 
@@ -66,27 +82,49 @@ if __name__ == '__main__':
 				head_tok = tokenlist[id2idx[head]]
 				children_toks = [tokenlist[id2idx[child]] for child in children]
 
-				pipeline.process(head_tok, children_toks)
+				logging.info("Processing head (%s/%s) with children (%s)",
+				 head_tok, head_tok["upos"], " | ".join(x.__str__() for x in children_toks))
 
-			# 	# TODO: here do stuff to update tree
+				head_tok["content"] = True
+
+				if head_tok["upos"] in ["VERB"]:
+					pipeline.process_verb(head_tok, children_toks)
+				elif head_tok["upos"] in ["NOUN", "PROPN"]:
+					pipeline.process_noun(head_tok, children_toks)
+				elif head_tok["upos"] in ["ADJ"]:
+					pipeline.process_adj(head_tok, children_toks)
+				elif head_tok["upos"] in ["ADV"]:
+					pipeline.process_adv(head_tok, children_toks)
+				else:
+					logging.warning("Found head (%s) with PoS %s, children (%s)",
+					 head_tok, head_tok["upos"], " | ".join(x.__str__() for x in children_toks))
+					#TODO: NUM?
+					#TODO: PRON?
 
 			for node in tokenlist:
+
 				# restore original lemma
 				node['lemma'] = node['lemma'].split(" ")[0]
+				node['form'] = node['form'].split(" ")[0]
 
-				if node.get("feats"):
-					node_feats = node['feats']
-					node_msfeats = node["ms feats"]
+				if node["content"]:
+					if node.get("feats"):
+						node_feats = node['feats']
+						node_msfeats = node["ms feats"]
 
-					for feat, value in node["feats"].items():
-						if feat in node["ms feats"]:
-							assert node["ms feats"][feat] == node["feats"][feat]
-						else:
-							node["ms feats"][feat] = node["feats"][feat]
+						for feat, value in node["feats"].items():
+							if feat in node["ms feats"]:
+								assert any(x==node["feats"][feat] for x in node["ms feats"][feat])
+							else:
+								node["ms feats"][feat].append(node["feats"][feat])
 
-				sorted_msfeats = sorted(node["ms feats"].items())
-				sorted_msfeats = [f"{x}={y}" for x, y in sorted_msfeats]
-				node['ms feats'] = "|".join(sorted_msfeats)
+					sorted_msfeats = sorted(node["ms feats"].items())
+					sorted_msfeats = [f"{x}={','.join(y)}" for x, y in sorted_msfeats]
+					node['ms feats'] = "|".join(sorted_msfeats)
+
+				elif node.get("ms feats"):
+					logging.error("Node %s should be empty bus has features %s", node, node["ms feats"])
+					node["ms feats"] = None
 
 			to_write = tokenlist.serialize()
 			print(to_write, file=fout)
