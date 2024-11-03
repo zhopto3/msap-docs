@@ -43,6 +43,8 @@
 - [ ] dependents with `det` relation:
   - [x] `Definite` feature copied on HEAD
   - [ ] TODO: `ogni`, `alcuni`...?
+- [ ] dependents with `case` relation:
+  - [ ] at the moment, provisional attribute has been set
 
 ### VERBs
 
