@@ -12,6 +12,27 @@ import code.utils as utils
 import code.italian.ita_pipeline as pipeline
 import conllu
 
+# def process_vertex(vertex):
+# 	print(vertex.token)
+# 	print("###", [tok.token for tok in vertex.children])
+
+def DFS(root_tree):
+
+	if root_tree.children:
+		children = root_tree.children
+		for child in children:
+			# print(child)
+			yield from DFS(child)
+		yield(root_tree.token, [child.token for child in children])
+	# else:
+	# 	yield(root_tree.token, None)
+
+	# else:
+	# 	return
+		# return root_tree.token, [tok.token for tok in root_tree.children]
+		# process_vertex(root_tree)
+	# else:
+	# 	pass
 
 if __name__ == '__main__':
 	import sys
@@ -19,8 +40,6 @@ if __name__ == '__main__':
 
 	filepath = pathlib.Path(sys.argv[1])
 	out_path = pathlib.Path(sys.argv[2])
-
-
 
 	logger = logging.getLogger(__name__)
 	logging.basicConfig(format='[%(module)s:%(lineno)d] %(levelname)s:%(message)s',
@@ -39,11 +58,12 @@ if __name__ == '__main__':
 	with open(out_path, "w", encoding="utf-8") as fout:
 
 		for tree, tokenlist in zip(parse_trees, parse_lists):
-			logging.info("Procesisng sentence id: %s", tokenlist.metadata["sent_id"])
-			logging.debug("Procesisng sentence: %s", tokenlist.metadata["text"])
+			logging.info("Processing sentence id: %s", tokenlist.metadata["sent_id"])
+			logging.debug("Processing sentence: %s", tokenlist.metadata["text"])
+			# print(tokenlist.metadata["text"])
 
 			for node in tokenlist:
-				node["ms feats"] = collections.defaultdict(list)
+				node["ms feats"] = collections.defaultdict(set)
 				node["content"] = False
 
 			id2idx = {token['id']:i for i, token in enumerate(tokenlist)}
@@ -74,18 +94,23 @@ if __name__ == '__main__':
 			# TODO: split parataxis?
 
 			tree = filtered_tokenlist.to_tree()
+			# print(tree.token)
+			# input()
 
-			heads = utils.span(tree)
-			heads_dict = {}
-			for element in heads:
-				head, children = element
-				heads_dict[head] = children
+			# heads = utils.span(tree)
+			# print(heads)
+			# heads_dict = {}
+			# for element in heads:
+			# 	head, children = element
+			# 	heads_dict[head] = children
 
-			assert utils.verify_span(heads) #TODO: a che serve?
+			# assert utils.verify_span(heads) #TODO: a che serve?
 
-			for head, children in heads_dict.items():
-				head_tok = tokenlist[id2idx[head]]
-				children_toks = [tokenlist[id2idx[child]] for child in children]
+
+			# for head, children in heads_dict.items():
+			for head_tok, children_toks in DFS(tree):
+				# head_tok = tokenlist[id2idx[head]]
+				# children_toks = [tokenlist[id2idx[child]] for child in children]
 
 				# remove parataxis
 				children_toks = [tok for tok in children_toks if tok["deprel"] != "parataxis"]
@@ -125,7 +150,7 @@ if __name__ == '__main__':
 							if feat in node["ms feats"]:
 								assert any(x==node["feats"][feat] for x in node["ms feats"][feat])
 							else:
-								node["ms feats"][feat].append(node["feats"][feat])
+								node["ms feats"][feat].add(node["feats"][feat])
 
 					sorted_msfeats = sorted(node["ms feats"].items())
 					sorted_msfeats = [f"{x}={','.join(y)}" for x, y in sorted_msfeats]
