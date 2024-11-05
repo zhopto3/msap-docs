@@ -4,6 +4,8 @@ import code.italian.lemma_based_decisions as lbd
 
 logger = logging.getLogger(__name__)
 
+# TODO: create_abstract_nsubj
+
 def copy_features(node):
 	if node.get("feats"):
 		for feat in node["feats"]:
@@ -12,12 +14,7 @@ def copy_features(node):
 		logger.warning("Node %s has no features", node)
 
 
-def process_verb(head_tok, children_toks):
 
-	head_tok["ms feats"]["tmp-head"].add("VERB")
-
-	for child_tok in children_toks:
-		child_tok["ms feats"]["tmp-child"].add("VERB")
 
 def process_noun(head_tok, children_toks):
 
@@ -85,6 +82,12 @@ def process_adj(head_tok, children_toks):
 					logger.debug("Adding Degree feature with value Cmp")
 					head_tok["ms feats"]["Degree"].add("Cmp")
 
+				elif child_tok["lemma"] in ["molto"]:
+					logger.debug("Adding Degree feature with value Sup")
+					head_tok["ms feats"]["Degree"].add("Sup")
+
+				# TODO: should we use all 7 possible values for degrees?
+
 				# TODO: how to deal with "non più X"?
 				# (see isst_tanl-3074, see isst_tanl-3598
 				# add Negation feature
@@ -93,6 +96,7 @@ def process_adj(head_tok, children_toks):
 					head_tok["ms feats"]["Polarity"].add("Neg")
 
 				else:
+					# TODO: molto, poco?
 					logger.debug("Switching node to content and keeping its features")
 					copy_features(child_tok)
 					child_tok["content"] = True

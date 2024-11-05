@@ -1,20 +1,20 @@
 """
 usage (launch from msap-docs directory):
-python code.italian.italian SOURCE_TREEBANK.conllu OUTPUT_FILEPATH
+python -m code.italian.italian SOURCE_TREEBANK.conllu OUTPUT_FILEPATH
 
 e.g.
 
-python code.italian.italian data/italian/dev.conllu data/italian/dev.out.conllu
+python -m code.italian.italian data/italian/dev.conllu data/italian/dev.out.conllu
 """
 import logging
 import collections
 import code.utils as utils
-import code.italian.ita_pipeline as pipeline
+import code.italian.verbs as verbs
+import code.italian.nouns as nouns
+import code.italian.adjs as adjs
+import code.italian.advs as advs
 import conllu
 
-# def process_vertex(vertex):
-# 	print(vertex.token)
-# 	print("###", [tok.token for tok in vertex.children])
 
 def DFS(root_tree):
 
@@ -119,16 +119,17 @@ if __name__ == '__main__':
 				logging.info("Processing head (%s/%s) with children (%s)",
 				 head_tok, head_tok["upos"], " | ".join(str(x) for x in children_toks))
 
+				# TODO: check case of ADPs
 				head_tok["content"] = True
 
 				if head_tok["upos"] in ["VERB"]:
-					pipeline.process_verb(head_tok, children_toks)
+					verbs.process_verb(head_tok, children_toks)
 				elif head_tok["upos"] in ["NOUN", "PROPN"]:
-					pipeline.process_noun(head_tok, children_toks)
+					nouns.process_noun(head_tok, children_toks)
 				elif head_tok["upos"] in ["ADJ"]:
-					pipeline.process_adj(head_tok, children_toks)
+					adjs.process_adj(head_tok, children_toks)
 				elif head_tok["upos"] in ["ADV"]:
-					pipeline.process_adv(head_tok, children_toks)
+					advs.process_adv(head_tok, children_toks)
 				else:
 					logging.warning("Found head (%s) with PoS %s, children (%s)",
 					 head_tok, head_tok["upos"], " | ".join(str(x) for x in children_toks))
