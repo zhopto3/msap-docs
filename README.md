@@ -281,7 +281,7 @@ also, guidelines for "weird" rels like "fixed" --->
 #### General
 
 - create a new column
-- decide what your content words and your function words are (by UPOS)
+- decide what your content words and your function words are (by UPOS and incoming and outgoing deprels)
 <!--- TODO: not necessarily only UPOS --->
 - go through your function words and classify them according to UPOS, relation, and maybe lemma
 - for each of these categories, figure out the morphosyntactic feature and place it on the head content word
