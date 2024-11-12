@@ -187,7 +187,7 @@ For example, in the sentence _the quick brown fox jumps over the lazy dog_ there
 content words (quick, brown, fox, jump, lazy, dog) and 3 function words (the, over, the).
 <!--- we probably need a better example --->
 
-In headless expressions, i.e., cases where one of the `fixed`, `compound`, `flat` or 
+In compounds or headless expressions, i.e., cases where one of the `fixed`, `flat` or 
 `goeswith` DEPRELs are used, all words are judged together to either be of content or of 
 function. Usually such cases will be contentful, but sometimes a fixed expression can be 
 a multi-word adposition, for example _as well as_ and _because of_.
