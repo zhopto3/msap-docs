@@ -235,20 +235,7 @@ for pragmatic reasons or otherwise being not detectable from the surface forms. 
 example, the annotation of the Japanese sentence _宣言したのだ_ ("(he) proclaimed") should
 not contain an abstract node for the non-existent subject although one is understood.
 
-Abstract nodes are also to be used when the argument is outside the clause, for example:
-~~~ conllu
-1   the the DET DT  _   2   det _   _   _
-2   cat cat NOUN    NN  Number=Sing 7   nsubj   _   _   Definite=Def|Number=Sing
-3   that    that    SCONJ   IN  _   4   mark _  _   _
-4   meows   meow    VERB    VBZ Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin   2   acl:relcl   _   _   Mood=Ind|Tense=Pres|VerbForm=Fin   
-4.1 _   _   _   _   _   4   nsubj   _   _   Number=Sing|Person=3
-5   nicely  nicely  ADC RB  _   4   advmod  _   _   |
-6   is  be  AUX VBZ Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin   6   cop _   _   _
-7   mine    my  PRON    PRP Number=Sing|Person=1|Poss=Yes|PronType=Prs	0   root    _   _   Mood=Ind|Number=Sing|Person=1|Poss=Yes|PronType=Prs|Tense=Pres
-~~~
-here "cat" is the subject of the outer clause and the verb in the inner clause agrees
-with a 3rd person singular argument, so it gets an abstract node. Note that if the verb
-was in past tense, no abstract node was created due to lack of agreement features.
+Abstract nodes are also to be used when the argument is outside the clause.
 
 #### Gaps
 
